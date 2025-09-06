@@ -1,0 +1,95 @@
+/* Reset and base styles for LoanFlow React app */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #333;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+body {
+  display: block;
+  place-items: unset;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Override any conflicting default styles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  line-height: normal;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mt90{
+  margin-top: 90px !important;
+}
+
+.accordion-button:not(.collapsed){
+  position: relative;
+  background-color: #1B424C !important;
+  color: #fff !important;
+  font-family: "DMSans-Regular" !important;
+  font-size: 20px !important;
+}
+
+/* Disable border when accordion button is focused */
+.accordion-button:focus,
+.accordion-button:focus-visible {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed):focus,
+.accordion-button:not(.collapsed):focus-visible {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Footer button styling to match footer links */
+.footer-box li button {
+  position: relative;
+  font-family: "Raleway-Medium" !important;
+  font-size: 17px !important;
+  line-height: normal !important;
+  letter-spacing: 1.15px !important;
+  color: #fff !important;
+  display: inline-block !important;
+  padding-top: 15px !important;
+  background: none !important;
+  border: none !important;
+  text-decoration: none !important;
+}
+
+.footer-box li button:hover {
+  color: #fff !important;
+  text-decoration: none !important;
+}

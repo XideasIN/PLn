@@ -1,0 +1,126 @@
+@media screen and (min-width:1200px) and (max-width:1439px){
+    .maintitle-text{
+        font-size: 52px;
+        line-height: normal;
+    }
+    .subtitle-text {
+        font-size: 16px;
+        line-height: normal;
+    }
+}
+@media screen and (min-width:992px) and (max-width:1199px){
+    .main {
+        padding-top: 130px;
+    }
+    .maintitle-text{
+        font-size: 52px;
+        line-height: normal;
+    }
+    .subtitle-text {
+        font-size: 16px;
+        line-height: normal;
+    }
+    .service-box img {
+        position: relative;
+        max-width: 60px;
+    }
+    .service-box h4 {
+        font-size: 30px;
+        line-height: normal;
+    }
+    .service-box p {
+        font-size: 16px;
+        line-height: 25px;
+    }
+    .mobile-row .col-lg-4 {
+        width: 40%;
+    }
+    .footer-box .col-lg-5 {
+        width: 55%;
+    }
+}
+@media screen and (min-width:768px) and (max-width:991px){
+    .main {
+        padding-top: 130px;
+    }
+    .maintitle-text{
+        font-size: 52px;
+        line-height: normal;
+    }
+    .subtitle-text {
+        font-size: 16px;
+        line-height: normal;
+    }
+    .footer-ul-icon {
+        margin-bottom: 25px;
+    }
+    .mobile-column {
+        flex-direction: column-reverse;
+    }
+    .pad-left{
+        padding-left: 0px;
+    }
+    .process-number{
+        left: 0;
+    }
+    .navbar{
+        background-color: #fff;
+    }
+    .navbar-nav {
+        gap: 0;
+    }
+}
+@media screen and (max-width:767px){
+    .main {
+        padding-top: 100px;
+    }
+    .maintitle-text{
+        font-size: 42px;
+        line-height: normal;
+    }
+    .subtitle-text {
+        font-size: 14px;
+        line-height: normal;
+        padding-right: 0px;
+    }
+    .getstart-btn {
+        padding: 10px 18px;
+    }
+    .mobile-column {
+        flex-direction: column-reverse;
+    }
+    .footer-title {
+        margin-top: 30px;
+    }
+    .navbar-nav {
+        gap: 0;
+    }
+    .navbar{
+        background-color: #fff;
+    }
+    .pad-left{
+        padding-left: 0px;
+    }
+    .process-number{
+        left: 0;
+    }
+}
+@media screen and (max-width:425px){
+    .works-text {
+        font-size: 30px;
+        line-height: normal;
+        margin-bottom: 20px;
+    }
+    .service-title {
+        font-size: 36px;
+        line-height: normal;
+    }
+    .service-box img {
+        max-width: 50px;
+    }
+    .service-box h4 {
+        font-size: 30px;
+        line-height: normal;
+    }
+}
+

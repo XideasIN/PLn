@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Funds - LoanFlow Personal Loan Management System</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link rel="stylesheet" type="text/css" href="animation/aos.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        ul li {
+            list-style: none;
+        }
+        
+        ul li a {
+            text-decoration: none;
+        }
+        
+        ol, ul {
+            padding-left: 0px;
+        }
+        
+        dl, ol, ul {
+            margin-top: 0;
+            margin-bottom: 0px;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        a, button {
+            color: inherit;
+        }
+        
+        body {
+            background: #fff;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        /* Header Styles */
+        .navbar {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+        }
+        
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1B424C !important;
+        }
+        
+        .navbar-nav .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #1B424C !important;
+        }
+        
+        .contact-btn {
+            background-color: #1B424C;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background-color: #0f2e35;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .maintitle-text {
+            font-size: 56px;
+            font-weight: bold;
+            color: #1B424C;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle-text {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .get-started-btn {
+            background-color: #1B424C;
+            color: #fff;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .get-started-btn:hover {
+            background-color: #0f2e35;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(27, 66, 76, 0.3);
+        }
+        
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 80px 0;
+        }
+        
+        .service-title {
+            font-size: 42px;
+            font-weight: bold;
+            color: #1B424C;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .service-box {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .service-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .service-box img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .service-box h4 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1B424C;
+            margin-bottom: 15px;
+        }
+        
+        .service-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .apply-btn {
+            background-color: #1B424C;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .apply-btn:hover {
+            background-color: #0f2e35;
+            transform: translateY(-2px);
+        }
+        
+        /* How We Work Section */
+        .how-we-work {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .works-text {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1B424C;
+            margin-bottom: 20px;
+        }
+        
+        .works-subtext {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .process-number {
+            font-size: 72px;
+            font-weight: bold;
+            color: #1B424C;
+            opacity: 0.1;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+        }
+        
+        .img-box {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .mt-50 {
+            margin-top: 50px;
+        }
+        
+        .mt-100 {
+            margin-top: 100px;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+        }
+        
+        .accordion-button {
+            background-color: #f8f9fa;
+            color: #1B424C;
+            font-weight: 600;
+            border: none;
+            padding: 20px;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: #1B424C;
+            color: #fff;
+        }
+        
+        .accordion-body {
+            padding: 20px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* About Section */
+        .service-bg {
+            background: linear-gradient(135deg, #1B424C 0%, #0f2e35 100%);
+            padding: 80px 0;
+        }
+        
+        .about-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #1B424C;
+            box-shadow: 0 0 0 0.2rem rgba(27, 66, 76, 0.25);
+        }
+        
+        .about-btn {
+            background-color: #1B424C;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .about-btn:hover {
+            background-color: #0f2e35;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1B424C;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer h5 {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer ul li a {
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+        
+        .footer ul li a:hover {
+            color: #fff;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #2c5a66;
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            color: #ccc;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .maintitle-text {
+                font-size: 36px;
+            }
+            
+            .service-title {
+                font-size: 32px;
+            }
+            
+            .works-text {
+                font-size: 24px;
+            }
+            
+            .process-number {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">QuickFunds</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-we-work">How We Work?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn contact-btn" onclick="scrollToSection('contact')">Contact Us</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-up-right">
+                    <h1 class="maintitle-text">Quick and Easy Loans for Your Financial Needs.</h1>
+                    <p class="subtitle-text">Our loan services offer a hassle-free and streamlined borrowing experience, providing you with the funds you need in a timely manner to meet your financial requirements.</p>
+                    <button class="btn get-started-btn">Get started</button>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up-left">
+                    <img src="https://via.placeholder.com/600x400/1B424C/ffffff?text=Hero+Image" alt="Hero Image" class="hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="service-title">Our Services</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="service-box">
+                        <img src="https://via.placeholder.com/80x80/1B424C/ffffff?text=P" alt="Personal loan">
+                        <h4>Personal loan</h4>
+                        <p>Personal loans provide borrowers with flexibility in how they use the funds.</p>
+                        <button class="btn apply-btn">Apply now</button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-box">
+                        <img src="https://via.placeholder.com/80x80/1B424C/ffffff?text=B" alt="Business loan">
+                        <h4>Business loan</h4>
+                        <p>Business Loan Services provide financial assistance to businesses for various purposes.</p>
+                        <button class="btn apply-btn">Apply now</button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-box">
+                        <img src="https://via.placeholder.com/80x80/1B424C/ffffff?text=A" alt="Auto loan">
+                        <h4>Auto loan</h4>
+                        <p>Auto Loan Services provide financing options for individuals businesses to purchase a vehicle.</p>
+                        <button class="btn apply-btn">Apply now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work Section -->
+    <section class="how-we-work" id="how-we-work">
+        <div class="container">
+            <h2 class="service-title">How we works ?</h2>
+            <p class="works-subtext text-center">This is a process, how you can get loan for your self.</p>
+            
+            <!-- Step 1 -->
+            <div class="row justify-content-around align-items-center mt-50">
+                <div class="col-lg-5" data-aos="fade-up-right">
+                    <img src="https://via.placeholder.com/500x300/1B424C/ffffff?text=Application" alt="Application" class="img-box">
+                </div>
+                <div class="col-lg-6 position-relative" data-aos="fade-up-left">
+                    <h4 class="process-number">01</h4>
+                    <h3 class="works-text">Application</h3>
+                    <p class="works-subtext">The borrower submits a loan application to the bank, either in person, online, or through other channels. The application includes personal and financial information, such as income, employment history, credit score, and the purpose of the loan.</p>
+                </div>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="row justify-content-around align-items-center mt-50">
+                <div class="col-lg-6 position-relative" data-aos="fade-up-right">
+                    <h4 class="process-number">02</h4>
+                    <h3 class="works-text">Documentation and Verification</h3>
+                    <p class="works-subtext">The bank requests supporting documents from the borrower, such as identification proof, income statements, bank statements, and collateral details (if applicable). The bank verifies the information provided to assess the borrower's creditworthiness and eligibility for the loan.</p>
+                </div>
+                <div class="col-lg-5" data-aos="fade-up-left">
+                    <img src="https://via.placeholder.com/500x300/1B424C/ffffff?text=Documentation" alt="Documentation" class="img-box">
+                </div>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="row justify-content-around align-items-center mt-50">
+                <div class="col-lg-5" data-aos="fade-up-right">
+                    <img src="https://via.placeholder.com/500x300/1B424C/ffffff?text=Assessment" alt="Credit Assessment" class="img-box">
+                </div>
+                <div class="col-lg-6 position-relative" data-aos="fade-up-left">
+                    <h4 class="process-number">03</h4>
+                    <h3 class="works-text">Credit Assessment</h3>
+                    <p class="works-subtext">The bank conducts a credit assessment to evaluate the borrower's creditworthiness and ability to repay the loan. This process involves analyzing the borrower's credit history, income stability, debt-to-income ratio, and other factors.</p>
+                </div>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="row justify-content-around align-items-center mt-50">
+                <div class="col-lg-6 position-relative" data-aos="fade-up-right">
+                    <h4 class="process-number">04</h4>
+                    <h3 class="works-text">Loan Approval</h3>
+                    <p class="works-subtext">If the borrower meets the bank's lending criteria and passes the credit assessment, the loan is approved. The bank determines the loan amount, interest rate, repayment term, and any associated fees.</p>
+                </div>
+                <div class="col-lg-5" data-aos="fade-up-left">
+                    <img src="https://via.placeholder.com/500x300/1B424C/ffffff?text=Approval" alt="Loan Approval" class="img-box">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="service-title">FAQ</h2>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            What types of loans do you offer?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p class="mb-0">We offer a comprehensive range of loan products including personal loans, business loans, auto loans, and home improvement loans. Our loan amounts range from $1,000 to $50,000 with flexible repayment terms from 6 to 60 months.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            How fast can I get approved and receive funds?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p class="mb-0">Our streamlined application process allows for quick decisions. Most applications receive a preliminary decision within 24 hours. Once approved, funds are typically deposited into your account within 1-3 business days.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            What are the eligibility requirements?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p class="mb-0">To qualify for our loans, you must be at least 18 years old, have a steady income, and meet our credit requirements. We consider various factors including your credit score, income stability, and debt-to-income ratio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="service-bg" id="about">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up-right">
+                    <h3 class="works-text" style="color: #fff;">About us</h3>
+                    <img src="https://via.placeholder.com/400x300/ffffff/1B424C?text=About+Us" alt="About us" class="img-box mt-3">
+                    <p class="works-subtext mt-3" style="color: #ccc;">QuickFunds- Your trusted financial partner for loans. Quick approvals, competitive rates, and personalized solutions to meet your unique needs. Empowering you to achieve your financial goals. Apply online today!</p>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up-left" id="contact">
+                    <div class="about-box">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone number</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="about-btn">SEND</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Add click handlers for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+        
+        // Contact form handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                email: formData.get('email')
+            };
+            
+            // Here you would typically send the data to your server
+            console.log('Form submitted:', data);
+            alert('Thank you for your message! We will contact you soon.');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Load footer dynamically
+        function loadFooter() {
+            let isFileProtocol = window.location.protocol === 'file:';
+            
+            if (isFileProtocol) {
+                // For file:// protocol, show a message about CORS limitations
+                document.getElementById('footer-placeholder').innerHTML = `
+                    <div class="container text-center py-5">
+                        <div class="alert alert-warning">
+                            <h5>Footer Loading Limited</h5>
+                            <p>When accessing via file:// protocol, the footer cannot load due to browser security restrictions (CORS).</p>
+                            <p><strong>To see the complete website with footer:</strong></p>
+                            <p>Please use: <code>http://localhost:8000/quickfunds.html</code></p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        }
+        
+        // Load footer when DOM is ready
+        document.addEventListener('DOMContentLoaded', loadFooter);
+    </script>
+</body>
+</html>

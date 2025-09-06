@@ -1,0 +1,40 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "question": "What are the eligibility criteria for a personal loan?",
+      "answer": "To be eligible for a personal loan, you must be at least 21 years old, have a stable income source, maintain a good credit score (typically 650+), and provide necessary documentation including ID proof, income proof, and bank statements."
+    },
+    {
+      "id": 2,
+      "question": "How quickly can I get loan approval?",
+      "answer": "Our streamlined process ensures quick approvals. Most applications are processed within 24-48 hours, and funds can be disbursed within 2-3 business days after approval, subject to document verification."
+    },
+    {
+      "id": 3,
+      "question": "What is the maximum loan amount I can apply for?",
+      "answer": "The loan amount depends on your income, credit score, and repayment capacity. Generally, we offer personal loans ranging from $1,000 to $100,000, with competitive interest rates based on your profile."
+    },
+    {
+      "id": 4,
+      "question": "Are there any prepayment charges?",
+      "answer": "We believe in transparency and flexibility. There are no prepayment penalties for loans closed after 12 months. For early closure within 12 months, minimal charges may apply as per terms and conditions."
+    },
+    {
+      "id": 5,
+      "question": "What documents do I need to submit?",
+      "answer": "Required documents include: Valid government-issued ID, proof of income (salary slips/bank statements), address proof, employment verification, and recent photographs. Additional documents may be requested based on your application."
+    },
+    {
+      "id": 6,
+      "question": "Can I apply for a loan with a co-applicant?",
+      "answer": "Yes, adding a co-applicant can strengthen your application and may help you qualify for a higher loan amount or better interest rates. The co-applicant must meet the same eligibility criteria."
+    },
+    {
+      "id": 7,
+      "question": "What happens if I miss a payment?",
+      "answer": "We understand that financial situations can change. If you miss a payment, please contact us immediately. We offer flexible repayment options and will work with you to find a suitable solution to avoid any negative impact on your credit score."
+    }
+  ]
+}

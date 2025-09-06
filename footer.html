@@ -1,0 +1,108 @@
+<!-- Footer -->
+<footer class="footer-box" data-aos="fade-up" style="font-size: 8px !important;">
+  <div class="container">
+    <!-- Logo Row -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <img id="company-logo" src="images/footer-logo.png" alt="Company Logo" class="footer-logo mb-3" style="max-width: 150px;">
+      </div>
+    </div>
+    <!-- Footer Content Row -->
+    <div class="row justify-content-between">
+      <div class="col-lg-3">
+        <h3 class="footer-title">Our Office</h3>
+          <ul class="footer-ul-contact">
+            <li><a href="#"><i class="bi bi-geo-alt-fill footer-contact-icons"></i><span id="company-address">Loading...</span></a></li>
+            <li><a href="#"><i class="bi bi-telephone-fill footer-contact-icons"></i><span id="company-phone">Loading...</span></a></li>
+            <li><a href="#"><i class="bi bi-envelope-fill footer-contact-icons"></i><span id="company-email">Loading...</span></a></li>
+          </ul>
+      </div>
+      <div class="col-lg-3">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul>
+          <li><a href="index.html#service"><i class="bi bi-chevron-right pe-2"></i>Services</a></li>
+          <li><a href="index.html#personal-loans"><i class="bi bi-chevron-right pe-2"></i>Personal Loans</a></li>
+          <li><a href="index.html#faq"><i class="bi bi-chevron-right pe-2"></i>FAQ's</a></li>
+          <li><a href="index.html#aboutus"><i class="bi bi-chevron-right pe-2"></i>About Us</a></li>
+          <li><a href="index.html#testimonials"><i class="bi bi-chevron-right pe-2"></i>Testimonials</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h3 class="footer-title">More Links</h3>
+        <ul>
+          <li><a href="index.html#aboutus"><i class="bi bi-chevron-right pe-2"></i>Contact Us</a></li>
+          <li><a href="application-step1.php"><i class="bi bi-chevron-right pe-2"></i>Apply</a></li>
+          <li><a href="resources.html"><i class="bi bi-chevron-right pe-2"></i>Resources</a></li>
+          <li><a href="terms-condition.html"><i class="bi bi-chevron-right pe-2"></i>Terms & Conditions</a></li>
+          <li><a href="privacy-policy.html"><i class="bi bi-chevron-right pe-2"></i>Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h3 class="footer-title">Business Hours</h3>
+        <div class="position-relative">
+          <p class="workday-title">Monday - Friday</p>
+          <p class="mb-0">9:00am - 05:00pm</p>
+        </div>
+        <div class="position-relative">
+          <p class="workday-title">Saturday</p>
+          <p class="mb-0">09:00am - 02:00pm</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="footer-disclaimer" style="font-size: 6px !important; color: #888; border-top: 1px solid #ddd; padding-top: 20px; margin-top: 20px; font-weight: normal;">
+          <p>DISCLAIMER: Loan APR ranges from 11% to 27% and repayment periods from 12 to 96 months. Example: a $5,500 unsecured loan, at 21% borrowed for 12 months, payments are $512.13 monthly. Total repayment including interest is $6,145.56.</p>
+          <p>LoanFlow, the operator of this website, does not broker loans to lenders and does not make installments or other loans or credit decisions. This website does not constitute an offer or solicitation of credit and will transmit the information you provide to the lender. Submitting your information to this website does not guarantee that credit will be approved. The operators of this website are not agents, representatives or intermediaries of any financial institution and do not endorse or charge for any services or products. Visitors to this website should also acknowledge that the operator of this website is not responsible for any disputes arising out of the conduct of lenders or applicants. Not all lenders can provide the credit they want, and not all borrowers are eligible. Transfer times may vary by lender and may also vary by individual financial institution. In certain circumstances, you may be required to provide faxes or other additional documentation, which may delay the approval process. This service is not available in all regions and the regions served by this website may change at any time without notice. Please contact the lender directly for any details, questions or concerns regarding your loan. Credit checks, consumer credit reports, and other personally identifiable information may be obtained from some of his Equifax and Trans Union. IMPORTANT INFORMATION ABOUT NEW ACCOUNT OPENING PROCEDURES to help the government combat terrorist financing and money laundering activities, federal law requires all financial institutions to obtain, and verify the identity of each individual who opens an account. What this means for you: When you open an account, lenders ask for your name, address, date of birth, and other information that can identify you. Lenders may also ask for a driver's license or other form of identification. Funds are generally deposited via direct deposit/certified check within 2-3 business days once approved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Load company information dynamically
+function loadCompanyInfo() {
+    fetch('/api/get-company-settings.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const companyData = data.data;
+                
+                // Update footer elements
+                const addressElement = document.getElementById('company-address');
+                const phoneElement = document.getElementById('company-phone');
+                const emailElement = document.getElementById('company-email');
+                const logoElement = document.getElementById('company-logo');
+                
+                if (addressElement) addressElement.innerHTML = companyData.company_address;
+                if (phoneElement) phoneElement.textContent = companyData.company_phone;
+                if (emailElement) emailElement.textContent = companyData.company_email;
+                
+                // Update logo if available
+                if (logoElement && companyData.company_logo) {
+                    logoElement.src = 'uploads/logos/' + companyData.company_logo;
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error loading company information:', error);
+            // Fallback to default values
+            const addressElement = document.getElementById('company-address');
+            const phoneElement = document.getElementById('company-phone');
+            const emailElement = document.getElementById('company-email');
+            
+            if (addressElement) addressElement.innerHTML = '700 Well St. #308,<br> NV 89002';
+            if (phoneElement) phoneElement.textContent = '1 888 489 8189';
+            if (emailElement) emailElement.textContent = 'cs@pulse.online';
+        });
+}
+
+// Load company info when footer is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadCompanyInfo);
+} else {
+    loadCompanyInfo();
+}
+</script>

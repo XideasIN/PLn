@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Resources - LoanFlow Personal Loan Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="animation/aos.css">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <style>
+      footer.footer-box {
+        background: url('footerimages.jpeg') no-repeat center center !important;
+        background-size: cover !important;
+        background-attachment: fixed !important;
+        min-height: 600px !important;
+        padding: 80px 0 !important;
+        position: relative !important;
+      }
+      footer.footer-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(44, 62, 80, 0.7) !important;
+        z-index: 1;
+      }
+      footer.footer-box .container {
+        position: relative;
+        z-index: 2;
+      }
+      
+      /* Override footer font styles */
+      footer.footer-box p {
+        font-size: 14px !important;
+        font-family: "DMSans-Regular" !important;
+        font-weight: normal !important;
+      }
+      
+      footer.footer-box li a {
+        font-size: 14px !important;
+        font-family: "DMSans-Regular" !important;
+        font-weight: normal !important;
+      }
+      
+      .footer-disclaimer p {
+        font-size: 10px !important;
+        font-family: "DMSans-Regular" !important;
+        font-weight: normal !important;
+      }
+      
+      /* Read More Link Styles */
+      .read-more {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .read-more:hover {
+        transform: translateX(5px);
+      }
+      
+      /* Article Modal Styles */
+      .modal-dialog {
+        max-width: 600px;
+        margin: 30px auto;
+      }
+      
+      .modal-content {
+        border-radius: 15px;
+        border: none;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      }
+      
+      .modal-header {
+        background: #f8f9fa;
+        color: #333;
+        border-radius: 15px 15px 0 0;
+        padding: 20px 30px;
+        border-bottom: none;
+      }
+      
+      .modal-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+      }
+      
+      .btn-close {
+        filter: brightness(0) invert(1);
+        opacity: 0.8;
+      }
+      
+      .btn-close:hover {
+        opacity: 1;
+      }
+      
+      .modal .btn-secondary {
+        background-color: #1B424C;
+        border-color: #1B424C;
+        color: white;
+      }
+      
+      .modal .btn-secondary:hover {
+        background-color: #0f2e35;
+        border-color: #0f2e35;
+        color: white;
+      }
+      
+      .modal .btn-secondary:focus {
+        background-color: #1B424C;
+        border-color: #1B424C;
+        box-shadow: 0 0 0 0.2rem rgba(27, 66, 76, 0.25);
+      }
+      
+      .modal-body {
+        padding: 30px;
+        max-height: 70vh;
+        overflow-y: auto;
+        line-height: 1.6;
+        font-size: 14px;
+      }
+
+      .modal-body h4 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 20px;
+        font-size: 1.25rem;
+      }
+
+      .modal-body h5 {
+        color: #333;
+        font-weight: 600;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+
+      .modal-body p {
+        color: #555;
+        margin-bottom: 15px;
+        text-align: justify;
+        font-size: 14px;
+      }
+      
+      .modal-body ul, .modal-body ol {
+        margin-bottom: 20px;
+        padding-left: 25px;
+      }
+      
+      .modal-body li {
+        margin-bottom: 8px;
+        color: #555;
+      }
+      
+      .modal-body strong {
+        color: #333;
+        font-weight: 600;
+      }
+      
+      .modal-footer {
+        border-top: 1px solid #eee;
+        padding: 20px 30px;
+        border-radius: 0 0 15px 15px;
+      }
+      
+      .modal-body::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      .modal-body::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+      }
+      
+      .modal-body::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px;
+      }
+      
+      .modal-body::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+      }
+      
+      @media (max-width: 768px) {
+        .modal-dialog {
+          max-width: 95%;
+          margin: 15px auto;
+        }
+        
+        .modal-body {
+          padding: 20px;
+          max-height: 60vh;
+          font-size: 13px;
+        }
+        
+        .modal-header {
+          padding: 15px 20px;
+        }
+        
+        .modal-title {
+          font-size: 1.3rem;
+        }
+      }
+      .calculator-box {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+      }
+      
+      .calculator-box h4 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+        text-align: center;
+        font-weight: 600;
+      }
+      
+      .calculator-box .form-group {
+        margin-bottom: 20px;
+      }
+      
+      .calculator-box label {
+        font-weight: 500;
+        color: #34495e;
+        margin-bottom: 8px;
+        display: block;
+      }
+      
+      .calculator-box .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+      }
+      
+      .calculator-box .form-control:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+      }
+      
+      .tips-box {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        height: 100%;
+      }
+      
+      .tips-box h4 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+        text-align: center;
+        font-weight: 600;
+      }
+      
+      .tip-item {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border-left: 4px solid #3498db;
+      }
+      
+      .tip-item h5 {
+        color: #2980b9;
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      
+      .tip-item p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.4;
+        color: #555;
+      }
+      
+      .calculation-results {
+        background: #e8f5e8;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #27ae60;
+      }
+      
+      .calculation-results h5 {
+        color: #27ae60;
+        margin-bottom: 15px;
+        text-align: center;
+        font-weight: 600;
+      }
+      
+      .result-item {
+        padding: 8px 0;
+        border-bottom: 1px solid #d5e8d5;
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      .result-item:last-child {
+        border-bottom: none;
+      }
+      
+      .result-item strong {
+         color: #2c3e50;
+       }
+       
+       .service-icon {
+         font-size: 48px;
+         margin-bottom: 20px;
+         display: block;
+         text-align: center;
+       }
+       
+       .blog-categories .badge {
+         font-size: 14px;
+         padding: 8px 16px;
+         cursor: pointer;
+         transition: all 0.3s ease;
+       }
+       
+       .blog-categories .badge:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+       }
+       
+       .blog-card {
+         background: #ffffff;
+         padding: 25px;
+         border-radius: 12px;
+         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+         height: 100%;
+         transition: all 0.3s ease;
+         border: 1px solid #e9ecef;
+       }
+       
+       .blog-card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+       }
+       
+       .blog-meta {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 15px;
+       }
+       
+       .blog-date {
+         color: #6c757d;
+         font-size: 12px;
+         font-weight: 500;
+       }
+       
+       .blog-card h4 {
+         color: #2c3e50;
+         margin-bottom: 15px;
+         font-size: 18px;
+         font-weight: 600;
+         line-height: 1.4;
+       }
+       
+       .blog-card p {
+         color: #555;
+         font-size: 14px;
+         line-height: 1.6;
+         margin-bottom: 20px;
+       }
+       
+       .blog-footer {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         border-top: 1px solid #e9ecef;
+         padding-top: 15px;
+       }
+       
+       .read-time {
+         color: #6c757d;
+         font-size: 12px;
+         font-weight: 500;
+       }
+       
+       .read-more {
+         color: #007bff;
+         text-decoration: none;
+         font-weight: 600;
+         font-size: 14px;
+         transition: color 0.3s ease;
+       }
+       
+       .read-more:hover {
+         color: #0056b3;
+         text-decoration: underline;
+       }
+     </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-between" id="navbarText">
+            <ul class="navbar-nav w-100 justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link" href="#loan-guides">Loan Guides</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#financial-tools">Financial Tools</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#resource-articles">Resource Articles</a>
+              </li>
+            </ul>
+            <a href="application-step1.php" class="headertop-btn me-2">APPLY</a>
+            <a href="login.html" class="headertop-btn-outline">LOGIN</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="main">
+      <div class="container">
+        <div class="row justify-content-center text-center mt-100">
+          <div class="col-lg-10" data-aos="fade-up">
+            <h1 class="maintitle-text">LoanFlow Financial Resources</h1>
+            <p class="subtitle-text">Stay informed with the latest insights on personal loans, credit improvement, and financial planning. Your trusted source for expert financial advice.</p>
+            <div class="blog-categories mt-4">
+              <span class="badge bg-primary me-2">Loan Guides</span>
+              <span class="badge bg-info me-2">Financial Tools</span>
+              <span class="badge bg-success me-2">Resource Articles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="service-bg mt-100" data-aos="fade-up" id="featured-posts">
+        <div class="container">
+          <h3 class="service-title mb-3">Featured Articles</h3>
+          <p class="text-center mb-4">Our most popular and helpful financial guides</p>
+          <div class="row">
+            <div class="col-lg-4 mt-3">
+              <div class="blog-card">
+                <div class="blog-meta">
+                  <span class="badge bg-primary">Loan Guides</span>
+                  <span class="blog-date">Dec 15, 2024</span>
+                </div>
+                <h4>Complete Guide to Personal Loans in 2024</h4>
+                <p>Everything you need to know about personal loans, from application to repayment. Understand rates, terms, and qualification requirements.</p>
+                <div class="blog-footer">
+                  <span class="read-time">📖 5 min read</span>
+                  <a href="#" class="read-more" onclick="openArticlePopup('loan-guide-2024')">Read More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 mt-3">
+              <div class="blog-card">
+                <div class="blog-meta">
+                  <span class="badge bg-success">Credit Tips</span>
+                  <span class="blog-date">Dec 12, 2024</span>
+                </div>
+                <h4>7 Proven Ways to Boost Your Credit Score</h4>
+                <p>Discover actionable strategies to improve your credit score quickly and build a strong financial foundation for better loan terms.</p>
+                <div class="blog-footer">
+                  <span class="read-time">📖 7 min read</span>
+                  <a href="#" class="read-more" onclick="openArticlePopup('credit-score-boost')">Read More</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 mt-3">
+              <div class="blog-card">
+                <div class="blog-meta">
+                  <span class="badge bg-info">Financial Planning</span>
+                  <span class="blog-date">Dec 10, 2024</span>
+                </div>
+                <h4>Smart Budgeting with Loan Payments</h4>
+                <p>Learn how to effectively budget for loan payments while maintaining your lifestyle and building emergency savings.</p>
+                <div class="blog-footer">
+                  <span class="read-time">📖 6 min read</span>
+                  <a href="#" class="read-more" onclick="openArticlePopup('budgeting-loans')">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-100" id="loan-guides">
+        <div class="container">
+          <div class="service-title">Loan Guides & Articles</div>
+          <p class="works-subtext text-center">Comprehensive guides to help you understand different types of loans and financing options</p>
+          <div class="row mt-50">
+            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up">
+              <div class="position-relative">
+                <h4 class="process-number">01</h4>
+                <h3 class="works-text">What is a Personal Loan?</h3>
+                <p class="works-subtext">A personal loan is an unsecured loan that provides you with a lump sum of money that you repay in fixed monthly installments over a set period. Unlike secured loans, personal loans don't require collateral, making them accessible for various financial needs including debt consolidation, home improvements, medical expenses, or major purchases.</p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="position-relative">
+                <h4 class="process-number">02</h4>
+                <h3 class="works-text">Understanding Interest Rates</h3>
+                <p class="works-subtext">Personal loan interest rates typically range from 5.99% to 35.99% APR, depending on your credit score, income, and debt-to-income ratio. Fixed rates mean your payment stays the same throughout the loan term. A higher credit score generally qualifies you for lower rates, potentially saving thousands over the life of the loan.</p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up">
+              <div class="position-relative">
+                <h4 class="process-number">03</h4>
+                <h3 class="works-text">Loan Terms & Repayment</h3>
+                <p class="works-subtext">Personal loans typically offer terms from 2 to 7 years. Shorter terms mean higher monthly payments but less interest paid overall. Longer terms reduce monthly payments but increase total interest costs. Choose a term that balances affordable monthly payments with minimizing total interest charges.</p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="position-relative">
+                <h4 class="process-number">04</h4>
+                <h3 class="works-text">Qualification Requirements</h3>
+                <p class="works-subtext">To qualify for a personal loan, you typically need: a credit score of 580+, steady income, debt-to-income ratio below 40%, and valid identification. Required documents include pay stubs, bank statements, tax returns, and employment verification. Pre-qualification lets you check rates without affecting your credit score.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-100" id="credit-tips">
+        <div class="container">
+          <div class="service-title">Credit Improvement Strategies</div>
+          <p class="works-subtext text-center">Build a stronger financial future with these proven credit improvement techniques</p>
+          <div class="row mt-50">
+            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up">
+              <div class="position-relative">
+                <h4 class="process-number">01</h4>
+                <h3 class="works-text">Understanding Your Credit Score</h3>
+                <p class="works-subtext">Your credit score is a three-digit number (300-850) that represents your creditworthiness. It's calculated based on five key factors: Payment History (35%), Credit Utilization (30%), Length of Credit History (15%), Credit Mix (10%), and New Credit (10%). Understanding these factors is the first step to improving your score.</p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="position-relative">
+                <h4 class="process-number">02</h4>
+                <h3 class="works-text">Quick Credit Improvement Tips</h3>
+                <p class="works-subtext">Pay all bills on time - even one late payment can significantly impact your score. Keep credit card balances below 30% of your limit, ideally under 10%. Check your credit report annually for errors and dispute any inaccuracies. You're entitled to one free report per year from each bureau.</p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up">
+              <div class="position-relative">
+                <h4 class="process-number">03</h4>
+                <h3 class="works-text">Long-term Credit Building</h3>
+                <p class="works-subtext">Diversify your credit mix with different types of credit (cards, loans, mortgages) when managed responsibly. Avoid opening too many new accounts as each application creates a hard inquiry. Consider becoming an authorized user on a family member's account with good credit history.</p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="position-relative">
+                <h4 class="process-number">04</h4>
+                <h3 class="works-text">Credit Repair Timeline</h3>
+                <p class="works-subtext">Credit improvement takes time: 30-60 days to dispute errors, 1-3 months to see improvements from paying down balances, 3-6 months to establish consistent payment patterns, 6-12 months for significant score improvements, and 2+ years for major negative items to have less impact.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="service-bg mt-100" id="financial-tools">
+        <div class="container">
+          <h3 class="service-title mb-3">Loan Calculator & Financial Tools</h3>
+          <p class="text-center mb-4">Use our financial calculators to estimate payments and plan your budget</p>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="calculator-box">
+                <h4>Personal Loan Calculator</h4>
+                <div class="form-group">
+                  <label for="loan_amount">Loan Amount ($)</label>
+                  <input type="number" id="loan_amount" class="form-control" value="10000" min="1000" max="100000">
+                </div>
+                <div class="form-group">
+                  <label for="interest_rate">Interest Rate (% APR)</label>
+                  <input type="number" id="interest_rate" class="form-control" value="12.5" min="5" max="36" step="0.1">
+                </div>
+                <div class="form-group">
+                  <label for="loan_term">Loan Term (Years)</label>
+                  <select id="loan_term" class="form-control">
+                    <option value="2">2 Years</option>
+                    <option value="3" selected>3 Years</option>
+                    <option value="4">4 Years</option>
+                    <option value="5">5 Years</option>
+                    <option value="6">6 Years</option>
+                    <option value="7">7 Years</option>
+                  </select>
+                </div>
+                <button onclick="calculateLoan()" class="about-btn">Calculate Payment</button>
+                <div id="calculation_result" class="mt-3"></div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="tips-box">
+                <h4>Financial Planning Tips</h4>
+                <div class="tip-item">
+                  <h5>💡 Debt-to-Income Ratio</h5>
+                  <p>Keep your total monthly debt payments below 40% of your gross monthly income for better loan approval odds.</p>
+                </div>
+                <div class="tip-item">
+                  <h5>💡 Emergency Fund</h5>
+                  <p>Build an emergency fund of 3-6 months of expenses before taking on additional debt.</p>
+                </div>
+                <div class="tip-item">
+                  <h5>💡 Compare Offers</h5>
+                  <p>Shop around with multiple lenders within a 14-45 day window to minimize credit score impact.</p>
+                </div>
+                <div class="tip-item">
+                  <h5>💡 Read the Fine Print</h5>
+                  <p>Understand all fees, including origination fees, prepayment penalties, and late payment charges.</p>
+                </div>
+                <div class="text-center mt-4">
+                  <a href="application-step1.php" class="about-btn">Apply for Loan</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resource Articles Grid Section -->
+      <div class="mt-100" id="resource-articles" data-aos="fade-up">
+        <div class="container">
+          <div class="service-title">Latest Resource Articles</div>
+          <div class="service-subtext">Stay informed with our latest insights on personal finance and lending</div>
+          <div class="row mt-50">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+              <div class="blog-card">
+                <div class="blog-meta">
+                  <span class="badge bg-primary">Credit Tips</span>
+                  <span class="blog-date">Jan 15, 2024</span>
+                </div>
+                <h4>How to Improve Your Credit Score Fast</h4>
+                <p>Learn proven strategies to boost your credit score in 30-90 days. From paying down balances to disputing errors, we cover actionable steps.</p>
+                <div class="blog-footer">
+                  <span class="read-time">5 min read</span>
+                  <a href="#" class="read-more" onclick="openArticlePopup('credit-improvement')">Read More →</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="blog-card">
+                <div class="blog-meta">
+                  <span class="badge bg-success">Loan Guides</span>
+                  <span class="blog-date">Jan 12, 2024</span>
+                </div>
+                <h4>Personal Loan vs Credit Card: Which is Better?</h4>
+                <p>Compare the pros and cons of personal loans versus credit cards for major purchases and debt consolidation.</p>
+                <div class="blog-footer">
+                  <span class="read-time">7 min read</span>
+                  <a href="#" class="read-more" onclick="openArticlePopup('loan-vs-credit')">Read More →</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="blog-card">
+                <div class="blog-meta">
+                  <span class="badge bg-warning">Financial Planning</span>
+                  <span class="blog-date">Jan 10, 2024</span>
+                </div>
+                <h4>Emergency Fund: How Much Do You Really Need?</h4>
+                <p>Calculate the right emergency fund size for your situation and learn the best places to keep your emergency savings.</p>
+                <div class="blog-footer">
+                  <span class="read-time">6 min read</span>
+                  <a href="#" class="read-more" onclick="openArticlePopup('emergency-fund')">Read More →</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+              <div class="blog-card">
+                <div class="blog-meta">
+                  <span class="badge bg-info">Industry News</span>
+                  <span class="blog-date">Jan 8, 2024</span>
+                </div>
+                <h4>2024 Interest Rate Predictions</h4>
+                <p>What experts are saying about interest rate trends this year and how it affects your borrowing decisions.</p>
+                <div class="blog-footer">
+                  <span class="read-time">4 min read</span>
+                  <a href="#" class="read-more" onclick="openArticlePopup('interest-rates-2024')">Read More →</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="blog-card">
+                <div class="blog-meta">
+                  <span class="badge bg-primary">Credit Tips</span>
+                  <span class="blog-date">Jan 5, 2024</span>
+                </div>
+                <h4>Understanding Your Credit Report</h4>
+                <p>A comprehensive guide to reading and understanding every section of your credit report, plus how to spot errors.</p>
+                <div class="blog-footer">
+                  <span class="read-time">8 min read</span>
+                  <a href="#" class="read-more" onclick="openArticlePopup('credit-report-guide')">Read More →</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="blog-card">
+                <div class="blog-meta">
+                  <span class="badge bg-success">Loan Guides</span>
+                  <span class="blog-date">Jan 3, 2024</span>
+                </div>
+                <h4>First-Time Borrower's Complete Guide</h4>
+                <p>Everything you need to know before applying for your first personal loan, from preparation to approval.</p>
+                <div class="blog-footer">
+                  <span class="read-time">10 min read</span>
+                  <a href="#" class="read-more" onclick="openArticlePopup('first-time-borrower')">Read More →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Article Popup Modal -->
+    <div class="modal fade" id="articleModal" tabindex="-1" aria-labelledby="articleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="articleModalLabel">Article Title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="articleContent" style="max-height: 70vh; overflow-y: auto;">
+            <!-- Article content will be loaded here -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    window.onscroll = function() {
+        var navbar = document.querySelector('.navbar');
+        
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    };
+  </script>
+  <script src="animation/aos.js"></script>
+  <script>
+    AOS.init(({
+      duration: 1000,
+    }))
+    
+    // Article content database
+    const articleContent = {
+      'loan-guide-2024': {
+        title: 'Complete Guide to Personal Loans in 2024',
+        content: `
+          <h4>Understanding Personal Loans</h4>
+          <p>Personal loans are unsecured loans that can be used for various purposes, from debt consolidation to home improvements. Unlike secured loans, they don't require collateral, making them accessible to a broader range of borrowers.</p>
+          
+          <h5>Types of Personal Loans</h5>
+          <ul>
+            <li><strong>Fixed-Rate Loans:</strong> Interest rate remains constant throughout the loan term</li>
+            <li><strong>Variable-Rate Loans:</strong> Interest rate can fluctuate based on market conditions</li>
+            <li><strong>Secured Personal Loans:</strong> Backed by collateral for better rates</li>
+            <li><strong>Unsecured Personal Loans:</strong> No collateral required but higher interest rates</li>
+          </ul>
+          
+          <h5>Qualification Requirements</h5>
+          <p>Most lenders require:</p>
+          <ul>
+            <li>Credit score of 600 or higher</li>
+            <li>Stable income and employment history</li>
+            <li>Debt-to-income ratio below 40%</li>
+            <li>Valid identification and proof of residence</li>
+          </ul>
+          
+          <h5>Application Process</h5>
+          <p>The typical application process involves:</p>
+          <ol>
+            <li>Pre-qualification to check rates without affecting credit</li>
+            <li>Gathering required documents</li>
+            <li>Submitting formal application</li>
+            <li>Underwriting and approval process</li>
+            <li>Funding (usually within 1-7 business days)</li>
+          </ol>
+          
+          <h5>Interest Rates and Terms</h5>
+          <p>Personal loan rates typically range from 6% to 36% APR, depending on your creditworthiness. Loan terms usually span 2-7 years, with longer terms resulting in lower monthly payments but higher total interest costs.</p>
+          
+          <h5>Best Practices</h5>
+          <ul>
+            <li>Shop around with multiple lenders</li>
+            <li>Compare APRs, not just interest rates</li>
+            <li>Read all terms and conditions carefully</li>
+            <li>Consider the total cost of the loan</li>
+            <li>Have a clear repayment plan</li>
+          </ul>
+        `
+      },
+      'credit-score-boost': {
+        title: '7 Proven Ways to Boost Your Credit Score',
+        content: `
+          <h4>Quick Credit Score Improvement Strategies</h4>
+          <p>Improving your credit score doesn't have to take years. With the right strategies, you can see significant improvements in 30-90 days.</p>
+          
+          <h5>1. Pay Down Credit Card Balances</h5>
+          <p>Your credit utilization ratio accounts for 30% of your credit score. Aim to keep balances below 30% of your credit limits, ideally under 10% for the best scores.</p>
+          
+          <h5>2. Request Credit Limit Increases</h5>
+          <p>Contact your credit card companies to request higher limits. This instantly improves your utilization ratio without paying down balances.</p>
+          
+          <h5>3. Dispute Credit Report Errors</h5>
+          <p>Check your credit reports for errors and dispute any inaccuracies. Common errors include:</p>
+          <ul>
+            <li>Incorrect account balances</li>
+            <li>Accounts that don't belong to you</li>
+            <li>Duplicate accounts</li>
+            <li>Incorrect payment history</li>
+          </ul>
+          
+          <h5>4. Become an Authorized User</h5>
+          <p>Ask a family member with good credit to add you as an authorized user on their account. Their positive payment history can boost your score.</p>
+          
+          <h5>5. Pay Bills on Time</h5>
+          <p>Payment history is 35% of your credit score. Set up automatic payments to ensure you never miss a due date.</p>
+          
+          <h5>6. Keep Old Accounts Open</h5>
+          <p>Length of credit history matters. Keep older accounts open even if you don't use them regularly.</p>
+          
+          <h5>7. Mix Your Credit Types</h5>
+          <p>Having different types of credit (credit cards, installment loans, mortgage) can positively impact your score.</p>
+          
+          <h5>Timeline for Improvements</h5>
+          <ul>
+            <li><strong>30 days:</strong> Credit utilization improvements</li>
+            <li><strong>60 days:</strong> Dispute resolutions</li>
+            <li><strong>90 days:</strong> New positive payment history</li>
+            <li><strong>6+ months:</strong> Significant score increases</li>
+          </ul>
+        `
+      },
+      'budgeting-loans': {
+        title: 'Smart Budgeting with Loan Payments',
+        content: `
+          <h4>Creating a Loan-Friendly Budget</h4>
+          <p>Successfully managing loan payments requires strategic budgeting that balances debt repayment with your other financial goals.</p>
+          
+          <h5>The 50/30/20 Rule with Loans</h5>
+          <p>Adapt the popular budgeting rule:</p>
+          <ul>
+            <li><strong>50% Needs:</strong> Essential expenses including minimum loan payments</li>
+            <li><strong>30% Wants:</strong> Discretionary spending</li>
+            <li><strong>20% Savings & Extra Payments:</strong> Emergency fund and additional loan payments</li>
+          </ul>
+          
+          <h5>Prioritizing Loan Payments</h5>
+          <p>When you have multiple loans, prioritize payments using:</p>
+          <ol>
+            <li><strong>Avalanche Method:</strong> Pay minimums on all loans, extra on highest interest rate</li>
+            <li><strong>Snowball Method:</strong> Pay minimums on all loans, extra on smallest balance</li>
+          </ol>
+          
+          <h5>Building an Emergency Fund</h5>
+          <p>Even with loan payments, maintain an emergency fund:</p>
+          <ul>
+            <li>Start with $500-$1,000 mini emergency fund</li>
+            <li>Gradually build to 3-6 months of expenses</li>
+            <li>Keep in high-yield savings account</li>
+          </ul>
+          
+          <h5>Reducing Expenses</h5>
+          <p>Free up money for loan payments by:</p>
+          <ul>
+            <li>Canceling unused subscriptions</li>
+            <li>Negotiating bills (phone, insurance, utilities)</li>
+            <li>Meal planning and cooking at home</li>
+            <li>Finding free entertainment options</li>
+          </ul>
+          
+          <h5>Increasing Income</h5>
+          <p>Boost your loan payment capacity:</p>
+          <ul>
+            <li>Side hustles or freelancing</li>
+            <li>Selling unused items</li>
+            <li>Asking for a raise or promotion</li>
+            <li>Cashback and rewards programs</li>
+          </ul>
+          
+          <h5>Avoiding Common Mistakes</h5>
+          <ul>
+            <li>Don't ignore other financial goals completely</li>
+            <li>Avoid taking on new debt while paying off loans</li>
+            <li>Don't sacrifice retirement contributions entirely</li>
+            <li>Maintain some fun money to avoid budget burnout</li>
+          </ul>
+        `
+      },
+      'credit-improvement': {
+        title: 'How to Improve Your Credit Score Fast',
+        content: `
+          <h4>Rapid Credit Score Enhancement</h4>
+          <p>While building excellent credit takes time, you can implement strategies to see improvements in your credit score within 30-90 days.</p>
+          
+          <h5>Understanding Credit Score Factors</h5>
+          <ul>
+            <li><strong>Payment History (35%):</strong> On-time payments are crucial</li>
+            <li><strong>Credit Utilization (30%):</strong> Keep balances low</li>
+            <li><strong>Length of Credit History (15%):</strong> Older accounts help</li>
+            <li><strong>Credit Mix (10%):</strong> Variety of credit types</li>
+            <li><strong>New Credit (10%):</strong> Limit hard inquiries</li>
+          </ul>
+          
+          <h5>Quick Wins (30 Days)</h5>
+          <ul>
+            <li>Pay down credit card balances below 30% utilization</li>
+            <li>Pay off small balances completely</li>
+            <li>Request credit limit increases</li>
+            <li>Set up automatic payments</li>
+          </ul>
+          
+          <h5>Medium-Term Strategies (60-90 Days)</h5>
+          <ul>
+            <li>Dispute errors on credit reports</li>
+            <li>Negotiate with creditors for goodwill deletions</li>
+            <li>Become an authorized user on someone's account</li>
+            <li>Consider a secured credit card if needed</li>
+          </ul>
+          
+          <h5>Long-Term Building (6+ Months)</h5>
+          <ul>
+            <li>Maintain consistent payment history</li>
+            <li>Keep old accounts open</li>
+            <li>Gradually increase credit limits</li>
+            <li>Diversify credit types responsibly</li>
+          </ul>
+          
+          <h5>Credit Monitoring</h5>
+          <p>Track your progress with:</p>
+          <ul>
+            <li>Free credit reports from annualcreditreport.com</li>
+            <li>Credit monitoring services</li>
+            <li>Credit card company free scores</li>
+            <li>Banking app credit score features</li>
+          </ul>
+        `
+      },
+      'loan-vs-credit': {
+        title: 'Personal Loan vs Credit Card: Which is Better?',
+        content: `
+          <h4>Comparing Personal Loans and Credit Cards</h4>
+          <p>Both personal loans and credit cards can provide access to funds, but they serve different purposes and have distinct advantages.</p>
+          
+          <h5>Personal Loans</h5>
+          <p><strong>Advantages:</strong></p>
+          <ul>
+            <li>Fixed interest rates and payments</li>
+            <li>Lower interest rates for good credit</li>
+            <li>Structured repayment timeline</li>
+            <li>No temptation to overspend</li>
+          </ul>
+          <p><strong>Disadvantages:</strong></p>
+          <ul>
+            <li>No ongoing access to funds</li>
+            <li>Origination fees may apply</li>
+            <li>Fixed payment regardless of financial situation</li>
+          </ul>
+          
+          <h5>Credit Cards</h5>
+          <p><strong>Advantages:</strong></p>
+          <ul>
+            <li>Revolving credit access</li>
+            <li>Rewards and cashback programs</li>
+            <li>Fraud protection</li>
+            <li>Flexible payment amounts</li>
+          </ul>
+          <p><strong>Disadvantages:</strong></p>
+          <ul>
+            <li>Variable interest rates</li>
+            <li>Higher interest rates typically</li>
+            <li>Temptation to overspend</li>
+            <li>Minimum payment trap</li>
+          </ul>
+          
+          <h5>Best Use Cases</h5>
+          <p><strong>Choose Personal Loans for:</strong></p>
+          <ul>
+            <li>Debt consolidation</li>
+            <li>Large, one-time expenses</li>
+            <li>Home improvements</li>
+            <li>When you want predictable payments</li>
+          </ul>
+          
+          <p><strong>Choose Credit Cards for:</strong></p>
+          <ul>
+            <li>Ongoing expenses</li>
+            <li>Building credit history</li>
+            <li>Emergency fund backup</li>
+            <li>Earning rewards on purchases</li>
+          </ul>
+          
+          <h5>Cost Comparison</h5>
+          <p>For a $10,000 expense:</p>
+          <ul>
+            <li><strong>Personal Loan (10% APR, 3 years):</strong> $323/month, $1,616 total interest</li>
+            <li><strong>Credit Card (18% APR, minimum payments):</strong> Varies, potentially $8,000+ total interest</li>
+          </ul>
+        `
+      },
+      'emergency-fund': {
+        title: 'Emergency Fund: How Much Do You Really Need?',
+        content: `
+          <h4>Building the Right Emergency Fund</h4>
+          <p>An emergency fund is your financial safety net, protecting you from unexpected expenses and income loss.</p>
+          
+          <h5>How Much to Save</h5>
+          <p>The right amount depends on your situation:</p>
+          <ul>
+            <li><strong>Stable job, dual income:</strong> 3-4 months of expenses</li>
+            <li><strong>Single income household:</strong> 6 months of expenses</li>
+            <li><strong>Irregular income:</strong> 6-12 months of expenses</li>
+            <li><strong>High-risk job:</strong> 9-12 months of expenses</li>
+          </ul>
+          
+          <h5>What Counts as an Emergency</h5>
+          <ul>
+            <li>Job loss or income reduction</li>
+            <li>Major medical expenses</li>
+            <li>Essential home repairs</li>
+            <li>Car repairs for work transportation</li>
+            <li>Family emergencies</li>
+          </ul>
+          
+          <h5>What's NOT an Emergency</h5>
+          <ul>
+            <li>Vacations</li>
+            <li>Holiday gifts</li>
+            <li>Sale items you "can't miss"</li>
+            <li>Non-essential home improvements</li>
+          </ul>
+          
+          <h5>Where to Keep Your Emergency Fund</h5>
+          <p><strong>Best Options:</strong></p>
+          <ul>
+            <li>High-yield savings accounts (2-5% APY)</li>
+            <li>Money market accounts</li>
+            <li>Short-term CDs (laddered)</li>
+          </ul>
+          
+          <p><strong>Avoid:</strong></p>
+          <ul>
+            <li>Checking accounts (low interest)</li>
+            <li>Investment accounts (too risky)</li>
+            <li>Cash at home (no growth, security risk)</li>
+          </ul>
+          
+          <h5>Building Your Fund</h5>
+          <ol>
+            <li><strong>Start small:</strong> Aim for $500-$1,000 first</li>
+            <li><strong>Automate savings:</strong> Set up automatic transfers</li>
+            <li><strong>Use windfalls:</strong> Tax refunds, bonuses, gifts</li>
+            <li><strong>Cut expenses temporarily:</strong> Redirect savings to emergency fund</li>
+            <li><strong>Increase gradually:</strong> Add more as income grows</li>
+          </ol>
+          
+          <h5>Maintaining Your Fund</h5>
+          <ul>
+            <li>Replenish after using it</li>
+            <li>Adjust amount as expenses change</li>
+            <li>Review annually</li>
+            <li>Keep it separate from other savings</li>
+          </ul>
+        `
+      },
+      'interest-rates-2024': {
+        title: '2024 Interest Rate Predictions',
+        content: `
+          <h4>Interest Rate Outlook for 2024</h4>
+          <p>Understanding interest rate trends helps you make informed borrowing and saving decisions throughout the year.</p>
+          
+          <h5>Federal Reserve Policy</h5>
+          <p>The Federal Reserve's decisions significantly impact all interest rates:</p>
+          <ul>
+            <li>Current federal funds rate: 5.25-5.50%</li>
+            <li>Expected to remain elevated through mid-2024</li>
+            <li>Potential rate cuts in late 2024 if inflation cools</li>
+          </ul>
+          
+          <h5>Personal Loan Rates</h5>
+          <p><strong>Current Range:</strong> 6-36% APR</p>
+          <p><strong>2024 Predictions:</strong></p>
+          <ul>
+            <li>Rates may remain high in first half of year</li>
+            <li>Possible gradual decline in second half</li>
+            <li>Good credit borrowers: 8-15% APR</li>
+            <li>Fair credit borrowers: 15-25% APR</li>
+          </ul>
+          
+          <h5>Credit Card Rates</h5>
+          <p><strong>Current Average:</strong> 21-24% APR</p>
+          <p><strong>Outlook:</strong></p>
+          <ul>
+            <li>Expected to remain near historic highs</li>
+            <li>Variable rates will follow Fed policy</li>
+            <li>0% promotional offers may become rarer</li>
+          </ul>
+          
+          <h5>Mortgage Rates</h5>
+          <p><strong>Current Range:</strong> 6.5-7.5%</p>
+          <p><strong>Predictions:</strong></p>
+          <ul>
+            <li>May peak in early 2024</li>
+            <li>Gradual decline possible in second half</li>
+            <li>Still elevated compared to 2020-2021 levels</li>
+          </ul>
+          
+          <h5>Savings Account Rates</h5>
+          <p><strong>High-Yield Savings:</strong> 4-5% APY</p>
+          <p><strong>Outlook:</strong></p>
+          <ul>
+            <li>Rates may remain attractive through 2024</li>
+            <li>Online banks offering competitive rates</li>
+            <li>Good time to maximize savings returns</li>
+          </ul>
+          
+          <h5>Strategic Recommendations</h5>
+          <p><strong>For Borrowers:</strong></p>
+          <ul>
+            <li>Consider locking in fixed rates now</li>
+            <li>Improve credit score before applying</li>
+            <li>Shop around for best rates</li>
+            <li>Consider waiting if rates may drop</li>
+          </ul>
+          
+          <p><strong>For Savers:</strong></p>
+          <ul>
+            <li>Take advantage of high savings rates</li>
+            <li>Consider longer-term CDs</li>
+            <li>Build emergency funds now</li>
+            <li>Review and optimize savings accounts</li>
+          </ul>
+        `
+      },
+      'credit-report-guide': {
+        title: 'Understanding Your Credit Report',
+        content: `
+          <h4>Decoding Your Credit Report</h4>
+          <p>Your credit report is a detailed record of your credit history. Understanding each section helps you identify areas for improvement.</p>
+          
+          <h5>Personal Information Section</h5>
+          <p>This section includes:</p>
+          <ul>
+            <li>Full name and any aliases</li>
+            <li>Current and previous addresses</li>
+            <li>Social Security number</li>
+            <li>Date of birth</li>
+            <li>Employment information</li>
+          </ul>
+          <p><strong>What to check:</strong> Ensure all information is accurate and up-to-date.</p>
+          
+          <h5>Account Information</h5>
+          <p>Details for each credit account:</p>
+          <ul>
+            <li><strong>Account type:</strong> Credit card, mortgage, auto loan, etc.</li>
+            <li><strong>Account status:</strong> Open, closed, paid off</li>
+            <li><strong>Credit limit or loan amount</strong></li>
+            <li><strong>Current balance</strong></li>
+            <li><strong>Payment history:</strong> On-time, late, missed payments</li>
+            <li><strong>Date opened and last activity</strong></li>
+          </ul>
+          
+          <h5>Payment History Details</h5>
+          <p>Payment codes explained:</p>
+          <ul>
+            <li><strong>1:</strong> Paid as agreed (good)</li>
+            <li><strong>2:</strong> 30 days late</li>
+            <li><strong>3:</strong> 60 days late</li>
+            <li><strong>4:</strong> 90 days late</li>
+            <li><strong>5:</strong> 120+ days late</li>
+            <li><strong>7:</strong> Making payments under wage earner plan</li>
+            <li><strong>8:</strong> Repossession</li>
+            <li><strong>9:</strong> Charged off/collection</li>
+          </ul>
+          
+          <h5>Public Records</h5>
+          <p>May include:</p>
+          <ul>
+            <li>Bankruptcies</li>
+            <li>Tax liens</li>
+            <li>Civil judgments</li>
+            <li>Foreclosures</li>
+          </ul>
+          
+          <h5>Inquiries Section</h5>
+          <p><strong>Hard Inquiries:</strong> When you apply for credit</p>
+          <ul>
+            <li>Remain on report for 2 years</li>
+            <li>May lower credit score temporarily</li>
+            <li>Multiple inquiries for same loan type count as one if within 14-45 days</li>
+          </ul>
+          
+          <p><strong>Soft Inquiries:</strong> Don't affect credit score</p>
+          <ul>
+            <li>Pre-approved offers</li>
+            <li>Your own credit checks</li>
+            <li>Employment background checks</li>
+          </ul>
+          
+          <h5>Common Errors to Look For</h5>
+          <ul>
+            <li>Accounts that don't belong to you</li>
+            <li>Incorrect account balances</li>
+            <li>Wrong payment history</li>
+            <li>Duplicate accounts</li>
+            <li>Incorrect personal information</li>
+            <li>Accounts not marked as "paid as agreed"</li>
+          </ul>
+          
+          <h5>How to Dispute Errors</h5>
+          <ol>
+            <li>Contact the credit bureau in writing</li>
+            <li>Provide supporting documentation</li>
+            <li>Contact the creditor directly</li>
+            <li>Follow up within 30 days</li>
+            <li>Keep records of all communications</li>
+          </ol>
+          
+          <h5>Monitoring Your Credit</h5>
+          <ul>
+            <li>Check reports from all three bureaus annually</li>
+            <li>Use free monitoring services</li>
+            <li>Set up fraud alerts if needed</li>
+            <li>Review monthly statements carefully</li>
+          </ul>
+        `
+      },
+      'first-time-borrower': {
+        title: 'First-Time Borrower\'s Complete Guide',
+        content: `
+          <h4>Your First Personal Loan Journey</h4>
+          <p>Taking out your first personal loan can be overwhelming. This guide walks you through everything you need to know.</p>
+          
+          <h5>Before You Apply</h5>
+          <p><strong>Assess Your Financial Situation:</strong></p>
+          <ul>
+            <li>Calculate your monthly income and expenses</li>
+            <li>Determine how much you can afford to pay monthly</li>
+            <li>Check your credit score and report</li>
+            <li>Gather necessary documents</li>
+          </ul>
+          
+          <p><strong>Required Documents:</strong></p>
+          <ul>
+            <li>Government-issued ID</li>
+            <li>Proof of income (pay stubs, tax returns)</li>
+            <li>Bank statements</li>
+            <li>Proof of address</li>
+            <li>Employment verification</li>
+          </ul>
+          
+          <h5>Understanding Loan Terms</h5>
+          <p><strong>Key Terms to Know:</strong></p>
+          <ul>
+            <li><strong>APR:</strong> Annual Percentage Rate (total cost including fees)</li>
+            <li><strong>Principal:</strong> The amount you borrow</li>
+            <li><strong>Term:</strong> Length of time to repay</li>
+            <li><strong>Origination Fee:</strong> Upfront fee for processing</li>
+            <li><strong>Prepayment Penalty:</strong> Fee for paying off early</li>
+          </ul>
+          
+          <h5>Types of Lenders</h5>
+          <p><strong>Banks:</strong></p>
+          <ul>
+            <li>Traditional, established institutions</li>
+            <li>May offer relationship discounts</li>
+            <li>Stricter qualification requirements</li>
+          </ul>
+          
+          <p><strong>Credit Unions:</strong></p>
+          <ul>
+            <li>Member-owned, non-profit</li>
+            <li>Often better rates and terms</li>
+            <li>More flexible with credit requirements</li>
+          </ul>
+          
+          <p><strong>Online Lenders:</strong></p>
+          <ul>
+            <li>Fast application and funding</li>
+            <li>Competitive rates</li>
+            <li>May accept lower credit scores</li>
+          </ul>
+          
+          <h5>Application Process</h5>
+          <ol>
+            <li><strong>Pre-qualification:</strong> Soft credit check for estimated rates</li>
+            <li><strong>Compare offers:</strong> Shop with multiple lenders</li>
+            <li><strong>Submit application:</strong> Complete formal application</li>
+            <li><strong>Verification:</strong> Lender verifies information</li>
+            <li><strong>Approval and funding:</strong> Receive funds if approved</li>
+          </ol>
+          
+          <h5>Red Flags to Avoid</h5>
+          <ul>
+            <li>Guaranteed approval regardless of credit</li>
+            <li>Upfront fees before loan approval</li>
+            <li>Pressure to apply immediately</li>
+            <li>No physical address or license</li>
+            <li>Rates that seem too good to be true</li>
+          </ul>
+          
+          <h5>Building Credit with Your Loan</h5>
+          <ul>
+            <li>Make all payments on time</li>
+            <li>Pay more than the minimum when possible</li>
+            <li>Keep other credit accounts in good standing</li>
+            <li>Monitor your credit score improvement</li>
+          </ul>
+          
+          <h5>Repayment Strategies</h5>
+          <ul>
+            <li>Set up automatic payments</li>
+            <li>Pay bi-weekly instead of monthly</li>
+            <li>Apply windfalls to principal</li>
+            <li>Communicate with lender if facing difficulties</li>
+          </ul>
+          
+          <h5>After Your First Loan</h5>
+          <p>Successfully managing your first loan:</p>
+          <ul>
+            <li>Improves your credit score</li>
+            <li>Establishes borrowing history</li>
+            <li>Qualifies you for better rates in the future</li>
+            <li>Builds relationship with lenders</li>
+          </ul>
+        `
+      }
+    };
+    
+    // Function to open article popup
+    function openArticlePopup(articleId) {
+      const article = articleContent[articleId];
+      if (article) {
+        document.getElementById('articleModalLabel').textContent = article.title;
+        document.getElementById('articleContent').innerHTML = article.content;
+        
+        const modal = new bootstrap.Modal(document.getElementById('articleModal'));
+        modal.show();
+      }
+    }
+    
+    // Load company settings from admin panel
+    async function loadCompanySettings() {
+      try {
+        const response = await fetch('api/get-company-settings.php');
+        const result = await response.json();
+        
+        if (result.success && result.data) {
+          // Update footer contact information
+          const addressElement = document.getElementById('company-address');
+          const phoneElement = document.getElementById('company-phone');
+          const emailElement = document.getElementById('company-email');
+          
+          if (addressElement) {
+            addressElement.innerHTML = result.data.company_address;
+          }
+          if (phoneElement) {
+            phoneElement.textContent = result.data.company_phone;
+          }
+          if (emailElement) {
+            emailElement.textContent = result.data.company_email;
+          }
+        }
+      } catch (error) {
+        console.log('Using default company settings:', error.message);
+        // Fallback to default values already in HTML
+      }
+    }
+    
+    // Load company settings when page loads
+    // Load footer dynamically
+    function loadFooter() {
+      let isFileProtocol = window.location.protocol === 'file:';
+      
+      if (isFileProtocol) {
+        // For file:// protocol, show a message about CORS limitations
+        document.getElementById('footer-placeholder').innerHTML = `
+          <div class="container text-center py-5">
+            <div class="alert alert-warning">
+              <h5>Footer Loading Limited</h5>
+              <p>When accessing via file:// protocol, the footer cannot load due to browser security restrictions (CORS).</p>
+              <p><strong>To see the complete website with footer:</strong></p>
+              <p>Please use: <code>http://localhost:8000/resources.html</code></p>
+            </div>
+          </div>
+        `;
+        return;
+      }
+      
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+    }
+    
+    // Load content when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      loadCompanySettings();
+      loadFooter();
+      initializeLoanCalculator();
+    });
+  </script>
+  
+  <script>
+
+    
+
+    
+
+    
+    // Loan calculator function
+    function calculateLoan() {
+      const amount = parseFloat(document.getElementById('loan_amount').value);
+      const rate = parseFloat(document.getElementById('interest_rate').value) / 100 / 12;
+      const term = parseFloat(document.getElementById('loan_term').value) * 12;
+      
+      if (amount && rate && term) {
+        const monthlyPayment = (amount * rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
+        const totalPayment = monthlyPayment * term;
+        const totalInterest = totalPayment - amount;
+        
+        document.getElementById('calculation_result').innerHTML = `
+          <div class="calculation-results">
+            <h5>Loan Calculation Results</h5>
+            <div class="result-item">
+              <strong>Monthly Payment:</strong> $${monthlyPayment.toFixed(2)}
+            </div>
+            <div class="result-item">
+              <strong>Total Payment:</strong> $${totalPayment.toFixed(2)}
+            </div>
+            <div class="result-item">
+              <strong>Total Interest:</strong> $${totalInterest.toFixed(2)}
+            </div>
+          </div>
+        `;
+      }
+    }
+    
+    // Auto-calculate when inputs change and initialize calculator
+    function initializeLoanCalculator() {
+      const inputs = ['loan_amount', 'interest_rate', 'loan_term'];
+      inputs.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.addEventListener('input', calculateLoan);
+          element.addEventListener('change', calculateLoan);
+        }
+      });
+      
+      // Initial calculation
+      calculateLoan();
+    }
+  </script>
+</body>
+</html>

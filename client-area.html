@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Area - LoanFlow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="assets/css/client-chat.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8fafc;
+            min-height: 100vh;
+            color: #1e293b;
+            position: relative;
+            overflow-x: hidden;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+
+        .client-container {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+        }
+
+
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #ffffff;
+            border-right: 1px solid #e2e8f0;
+            padding: 32px 24px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+
+
+        .client-profile {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #1B424C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: #FFFFFF;
+            font-size: 32px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .profile-avatar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(27, 66, 76, 0.3);
+        }
+
+        .client-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #1e293b;
+        }
+
+        .client-id {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 10px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #64748b;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #1B424C;
+            color: #FFFFFF;
+        }
+
+        .nav-link.active {
+            background: #1B424C;
+            font-weight: 600;
+        }
+
+        .nav-link i {
+            margin-right: 10px;
+            width: 16px;
+            font-size: 14px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 32px;
+            background: #f8fafc;
+        }
+
+        .content-header {
+            background: #ffffff;
+            padding: 24px 32px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+
+
+
+        .welcome-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+            letter-spacing: -0.025em;
+        }
+
+        .last-login {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .content-section {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        .content-section:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            color: #1B424C;
+        }
+
+        /* Loan Progress Stages */
+        .loan-stages {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .loan-stages::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 20px;
+            right: 20px;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .stage-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 18px;
+            margin-bottom: 8px;
+            transition: all 0.2s ease;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        .stage.completed .stage-circle {
+            background: #1B424C;
+            color: #FFFFFF;
+            box-shadow: 0 8px 20px rgba(27, 66, 76, 0.4);
+            animation: completedPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes completedPulse {
+            0%, 100% {
+                box-shadow: 0 8px 20px rgba(27, 66, 76, 0.4);
+            }
+            50% {
+                box-shadow: 0 12px 25px rgba(27, 66, 76, 0.6);
+            }
+        }
+
+        .stage.active .stage-circle {
+            background: #1B424C;
+            color: white;
+            box-shadow: 0 10px 25px rgba(27, 66, 76, 0.5);
+            animation: activeGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes activeGlow {
+            0%, 100% {
+                box-shadow: 0 10px 25px rgba(27, 66, 76, 0.5);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 15px 30px rgba(27, 66, 76, 0.7);
+                transform: scale(1.05);
+            }
+        }
+
+        .stage-label {
+            font-size: 12px;
+            text-align: center;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .stage.completed .stage-label,
+        .stage.active .stage-label {
+            color: #000000;
+            font-weight: bold;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(27, 66, 76, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(27, 66, 76, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(27, 66, 76, 0); }
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(27, 66, 76, 0.5); }
+            to { box-shadow: 0 0 30px rgba(27, 66, 76, 0.8); }
+        }
+
+        /* Progress Bar Animation */
+        .progress-fill {
+            position: absolute;
+            top: 28px;
+            left: 20px;
+            height: 6px;
+            background: #1B424C;
+            border-radius: 3px;
+            z-index: 2;
+            width: 33%;
+            box-shadow: 0 0 10px rgba(27, 66, 76, 0.4);
+            animation: progressFill 3s ease-in-out;
+        }
+
+        @keyframes progressFill {
+            from { width: 0%; }
+            to { width: 33%; }
+        }
+
+        /* Dynamic Alert Banner */
+        .alert-banner {
+            background: #1B424C;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(27, 66, 76, 0.2);
+            font-size: 14px;
+        }
+
+        .alert-banner.warning {
+            background: #1B424C;
+            box-shadow: 0 4px 15px rgba(27, 66, 76, 0.3);
+        }
+
+        .alert-banner.info {
+            background: #1B424C;
+            box-shadow: 0 4px 15px rgba(27, 66, 76, 0.3);
+        }
+
+        .alert-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .alert-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .alert-close:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Stage System Enhancements */
+        .stage.locked {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .stage.locked .stage-icon {
+            background: #e0e0e0;
+            color: #9e9e9e;
+        }
+
+        .stage-actions {
+            margin: 15px 0;
+        }
+
+        .btn-primary {
+            background: #1B424C;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .btn-primary:hover {
+            background: #0f2a31;
+            box-shadow: 0 2px 4px rgba(27, 66, 76, 0.2);
+        }
+
+        .btn-primary:disabled {
+            background: #e2e8f0;
+            color: #64748b;
+            cursor: not-allowed;
+            box-shadow: none;
+            opacity: 0.6;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            margin-top: 24px;
+            padding: 20px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+
+
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            flex: 1;
+            min-width: 160px;
+            padding: 12px 16px;
+            background: #FFFFFF;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 500;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .action-btn:hover:not(:disabled) {
+            background: #f8fafc;
+            color: #1B424C;
+            border-color: #1B424C;
+        }
+
+        .action-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #f8fafc;
+            color: #94a3b8;
+        }
+
+
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #1B424C;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #1B424C;
+        }
+
+
+
+        .info-card:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .info-card h4 {
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .info-card p {
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* Message Center */
+        .message-item {
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 3px solid #1B424C;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            border-left: 3px solid #1B424C;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .message-from {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 14px;
+        }
+
+        .message-date {
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        .message-content {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .compose-btn {
+            background: #1B424C;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .compose-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Documents */
+        .document-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #FFFFFF;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .document-item:hover {
+            transform: translateX(5px);
+        }
+
+        .document-icon {
+            width: 40px;
+            height: 40px;
+            background: #1B424C;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            margin-right: 15px;
+        }
+
+        .document-info {
+            flex: 1;
+        }
+
+        .document-name {
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 5px;
+        }
+
+        .document-size {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .download-btn {
+            background: #1B424C;
+            color: #FFFFFF;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .client-container {
+                flex-direction: column;
+            }
+
+            .loan-stages {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .loan-stages::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="client-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="client-profile">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="client-name">John Smith</div>
+                <div class="client-id">Client ID: LF-2024-001</div>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#loan-status" class="nav-link" onclick="showSection('loan-status')">
+                        <i class="fas fa-chart-line"></i>
+                        Loan Status
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#documents" class="nav-link" onclick="showSection('documents')">
+                        <i class="fas fa-file-alt"></i>
+                        Documents
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#messages" class="nav-link" onclick="showSection('messages')">
+                        <i class="fas fa-envelope"></i>
+                        Messages
+                        <span class="badge" style="background: #ff4757; color: white; border-radius: 50%; padding: 2px 6px; font-size: 10px; margin-left: auto;">3</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profile" class="nav-link" onclick="showSection('profile')">
+                        <i class="fas fa-user-cog"></i>
+                        Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#support" class="nav-link" onclick="showSection('support')">
+                        <i class="fas fa-headset"></i>
+                        Support
+                    </a>
+                </li>
+                <li class="nav-item" style="margin-top: 30px;">
+                    <a href="index.html" class="nav-link" style="color: #ff4757;">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="content-header">
+                <div class="welcome-text">Welcome back, John!</div>
+                <div class="last-login">Last login: January 15, 2024 at 2:30 PM</div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="content-section">
+                <div class="section-title">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard Overview
+                </div>
+                
+                <!-- Dynamic Alert Banner -->
+                <div id="dynamicAlert" class="alert-banner" style="display: none;">
+                    <div class="alert-content">
+                        <i class="fas fa-check-circle"></i>
+                        <span id="alertMessage">You have been Pre-Approved!</span>
+                    </div>
+                    <button class="alert-close" onclick="dismissAlert()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Loan Amount</h4>
+                        <p style="font-size: 24px; font-weight: bold; color: #1B424C;" id="loanAmount">$25,000</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Interest Rate</h4>
+                        <p style="font-size: 24px; font-weight: bold; color: #1B424C;" id="interestRate">5.2% APR</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Monthly Payment</h4>
+                        <p style="font-size: 24px; font-weight: bold; color: #1B424C;" id="monthlyPayment">$472.03</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Loan Term</h4>
+                        <p style="font-size: 24px; font-weight: bold; color: #1B424C;" id="loanTerm">60 months</p>
+                    </div>
+                </div>
+
+                <!-- Dynamic 4-Stage Loan Processing System -->
+                <div class="loan-status">
+                    <h4>Loan Processing Status</h4>
+                    <div class="progress-container">
+                        <div class="progress-line">
+                            <div class="progress-fill" id="progressFill" style="width: 25%;"></div>
+                        </div>
+                        <div class="loan-stages" id="loanStages">
+                            <div class="stage completed" data-stage="1">
+                                <div class="stage-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="stage-label">Step 1: Documents</div>
+                            </div>
+                            <div class="stage active" data-stage="2">
+                                <div class="stage-icon">
+                                    <i class="fas fa-signature"></i>
+                                </div>
+                                <div class="stage-label">Step 2: Agreement</div>
+                            </div>
+                            <div class="stage locked" data-stage="3">
+                                <div class="stage-icon">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <div class="stage-label">Step 3: Banking</div>
+                            </div>
+                            <div class="stage locked" data-stage="4">
+                                <div class="stage-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div class="stage-label">Step 4: Payment</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="current-stage-info">
+                        <div class="stage-card" id="currentStageCard">
+                            <h5 id="currentStageTitle">Current Status: Step 2 - Digital Agreement</h5>
+                            <p id="currentStageDescription">Please review and digitally sign your loan agreement to proceed to the next step.</p>
+                            <div class="stage-actions">
+                                <button class="btn-primary" id="stageActionBtn" onclick="proceedToCurrentStage()">Review Agreement</button>
+                            </div>
+                            <div class="estimated-time">
+                                <i class="fas fa-clock"></i>
+                                <span id="estimatedTime">Complete within 24 hours to maintain processing speed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions for Funded Clients -->
+                <div class="quick-actions" id="quickActions" style="display: none;">
+                    <h4>Quick Actions</h4>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="checkLoanBalance()">
+                            <i class="fas fa-balance-scale"></i>
+                            Loan Balance
+                        </button>
+                        <button class="action-btn" onclick="checkNextPayment()">
+                            <i class="fas fa-calendar-alt"></i>
+                            Next Payment
+                        </button>
+                        <button class="action-btn" id="makePaymentBtn" onclick="makePayment()" disabled>
+                            <i class="fas fa-credit-card"></i>
+                            Make Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Status Section -->
+            <div id="loan-status" class="content-section" style="display: none;">
+                <div class="section-title">
+                    <i class="fas fa-chart-line"></i>
+                    Loan Processing Status
+                </div>
+                
+                <div class="loan-stages">
+                    <div class="progress-fill"></div>
+                    <div class="stage completed">
+                        <div class="stage-circle">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="stage-label">Application<br>Submitted</div>
+                    </div>
+                    <div class="stage active">
+                        <div class="stage-circle">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="stage-label">Under<br>Review</div>
+                    </div>
+                    <div class="stage">
+                        <div class="stage-circle">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <div class="stage-label">Approved</div>
+                    </div>
+                    <div class="stage">
+                        <div class="stage-circle">
+                            <i class="fas fa-money-check-alt"></i>
+                        </div>
+                        <div class="stage-label">Funded</div>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Current Stage</h4>
+                        <p>Your application is currently under review by our underwriting team. We'll notify you of any updates within 24-48 hours.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Estimated Completion</h4>
+                        <p>Based on current processing times, your loan should be fully processed within 3-5 business days.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents Section -->
+            <div id="documents" class="content-section" style="display: none;">
+                <div class="section-title">
+                    <i class="fas fa-file-alt"></i>
+                    Your Documents
+                </div>
+                
+                <div class="document-item">
+                    <div class="document-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="document-info">
+                        <div class="document-name">Loan Agreement</div>
+                        <div class="document-size">PDF • 2.3 MB</div>
+                    </div>
+                    <button class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <div class="document-item">
+                    <div class="document-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="document-info">
+                        <div class="document-name">Terms & Conditions</div>
+                        <div class="document-size">PDF • 1.8 MB</div>
+                    </div>
+                    <button class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <div class="document-item">
+                    <div class="document-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <div class="document-info">
+                        <div class="document-name">Payment Schedule</div>
+                        <div class="document-size">PDF • 856 KB</div>
+                    </div>
+                    <button class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+
+            <!-- Messages Section -->
+            <div id="messages" class="content-section" style="display: none;">
+                <div class="section-title">
+                    <i class="fas fa-envelope"></i>
+                    Message Center
+                </div>
+                
+                <button class="compose-btn">
+                    <i class="fas fa-plus"></i> Compose New Message
+                </button>
+
+                <div class="message-item">
+                    <div class="message-header">
+                        <div class="message-from">LoanFlow Support Team</div>
+                        <div class="message-date">Jan 15, 2024</div>
+                    </div>
+                    <div class="message-content">
+                        Welcome to LoanFlow! Your application has been received and is currently being processed. We'll keep you updated on the progress.
+                    </div>
+                </div>
+
+                <div class="message-item">
+                    <div class="message-header">
+                        <div class="message-from">Underwriting Department</div>
+                        <div class="message-date">Jan 14, 2024</div>
+                    </div>
+                    <div class="message-content">
+                        We need additional documentation to complete your application. Please upload your recent pay stubs through the documents section.
+                    </div>
+                </div>
+
+                <div class="message-item">
+                    <div class="message-header">
+                        <div class="message-from">Account Manager</div>
+                        <div class="message-date">Jan 13, 2024</div>
+                    </div>
+                    <div class="message-content">
+                        Thank you for choosing LoanFlow for your personal loan needs. If you have any questions, please don't hesitate to reach out.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div id="profile" class="content-section" style="display: none;">
+                <div class="section-title">
+                    <i class="fas fa-user-cog"></i>
+                    Profile Information
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Personal Information</h4>
+                        <p><strong>Name:</strong> John Smith<br>
+                        <strong>Email:</strong> john.smith@email.com<br>
+                        <strong>Phone:</strong> (555) 123-4567<br>
+                        <strong>Address:</strong> 123 Main St, City, State 12345</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Employment Information</h4>
+                        <p><strong>Employer:</strong> ABC Corporation<br>
+                        <strong>Position:</strong> Software Engineer<br>
+                        <strong>Annual Income:</strong> $75,000<br>
+                        <strong>Employment Length:</strong> 3 years</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Section -->
+            <div id="support" class="content-section" style="display: none;">
+                <div class="section-title">
+                    <i class="fas fa-headset"></i>
+                    Customer Support
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Contact Information</h4>
+                        <p><strong>Phone:</strong> 1-800-LOANFLOW<br>
+                        <strong>Email:</strong> support@loanflow.com<br>
+                        <strong>Hours:</strong> Mon-Fri 8AM-8PM EST<br>
+                        <strong>Live Chat:</strong> Available 24/7</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Frequently Asked Questions</h4>
+                        <p>• How do I make a payment?<br>
+                        • Can I change my payment date?<br>
+                        • How do I request a payoff quote?<br>
+                        • What if I need to defer a payment?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced AI Chat Box -->
+    <div id="aiChatBox" class="ai-chat-container">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="chat-title">
+                    <h4>AI Assistant</h4>
+                    <span class="chat-status" id="chatStatus">Online</span>
+                </div>
+            </div>
+            <div class="chat-controls">
+                <button class="chat-minimize" onclick="minimizeChat()">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="chat-close" onclick="closeChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <p>Hello! I'm your AI assistant. I can help you with questions about your loan, payments, documents, and more. How can I assist you today?</p>
+                    <span class="message-time">Just now</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span>AI is typing...</span>
+        </div>
+        
+        <div class="chat-input-container">
+            <div class="chat-input-wrapper">
+                <input type="text" id="chatInput" placeholder="Type your message..." maxlength="500">
+                <button id="sendButton" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="chat-suggestions">
+                <button class="suggestion-btn" onclick="sendSuggestion('What is my current loan balance?')">Loan Balance</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('When is my next payment due?')">Next Payment</button>
+                <button class="suggestion-btn" onclick="sendSuggestion('How do I make a payment?')">Make Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Toggle Button -->
+    <div id="chatToggle" class="chat-toggle" onclick="toggleChat()">
+        <i class="fas fa-comments"></i>
+        <span class="chat-notification" id="chatNotification" style="display: none;">1</span>
+    </div>
+
+    <script>
+        // 4-Stage Loan Processing System
+        let clientData = {
+            currentStage: 2,
+            isPreApproved: true,
+            stagesCompleted: {
+                documents: true,
+                agreement: false,
+                banking: false,
+                payment: false
+            },
+            isFunded: false,
+            hasOutstandingLoan: false
+        };
+
+        // Initialize the dynamic system
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLoanSystem();
+            updateStageDisplay();
+            setupEventListeners();
+            
+            // Simulate loan progress animation
+            setTimeout(() => {
+                const progressFill = document.querySelector('.progress-fill');
+                if (progressFill) {
+                    progressFill.style.animation = 'progressFill 3s ease-in-out forwards';
+                }
+            }, 1000);
+        });
+
+        function initializeLoanSystem() {
+            // Show pre-approval alert if applicable
+            if (clientData.isPreApproved && clientData.currentStage <= 2) {
+                showPreApprovalAlert();
+            }
+            
+            // Load client data from server (simulated)
+            loadClientData();
+        }
+
+        function loadClientData() {
+            // In a real implementation, this would fetch from the server
+            // For now, we'll simulate different client states
+            updateStageDisplay();
+        }
+
+        function showPreApprovalAlert() {
+            const alertHtml = `
+                <div id="preApprovalAlert" class="alert-banner">
+                    <div class="alert-content">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Congratulations! You have been Pre-Approved for your loan. Complete the steps below to proceed.</span>
+                    </div>
+                    <button class="alert-close" onclick="dismissAlert('preApprovalAlert')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            const dashboard = document.getElementById('dashboard');
+            const existingAlert = document.getElementById('preApprovalAlert');
+            
+            if (!existingAlert) {
+                dashboard.insertAdjacentHTML('afterbegin', alertHtml);
+            }
+        }
+
+        function dismissAlert(alertId) {
+            const alert = document.getElementById(alertId);
+            if (alert) {
+                alert.style.animation = 'slideOutUp 0.3s ease-in';
+                setTimeout(() => alert.remove(), 300);
+            }
+        }
+
+        function updateStageDisplay() {
+            const stages = {
+                1: { title: 'Documents', desc: 'Upload required identification and income documents', action: 'Upload Documents' },
+                2: { title: 'Agreement', desc: 'Review and digitally sign your loan agreement', action: 'Sign Agreement' },
+                3: { title: 'Banking', desc: 'Provide bank account information for fund transfer', action: 'Add Bank Details' },
+                4: { title: 'Payment', desc: 'Complete payment of processing fee to finalize loan', action: 'Make Payment' }
+            };
+
+            // Update current stage info
+            const currentStageTitle = document.getElementById('currentStageTitle');
+            const currentStageDescription = document.getElementById('currentStageDescription');
+            const stageActionBtn = document.getElementById('stageActionBtn');
+            const estimatedTime = document.getElementById('estimatedTime');
+
+            if (currentStageTitle && stages[clientData.currentStage]) {
+                const stage = stages[clientData.currentStage];
+                currentStageTitle.textContent = `Current Status: Step ${clientData.currentStage} - ${stage.title}`;
+                currentStageDescription.textContent = stage.desc;
+                stageActionBtn.textContent = stage.action;
+                
+                // Update estimated time based on stage
+                const timeEstimates = {
+                    1: 'Complete within 24 hours to maintain processing speed',
+                    2: 'Complete within 24 hours to maintain processing speed',
+                    3: 'Complete within 2 hours to maintain processing speed',
+                    4: 'Complete within 1 hour to finalize your loan'
+                };
+                
+                if (estimatedTime) {
+                    estimatedTime.textContent = timeEstimates[clientData.currentStage] || 'Processing time varies';
+                }
+            }
+            
+            // Update progress bar
+            updateProgressBar();
+            
+            // Update quick actions
+            updateQuickActions();
+        }
+
+        function updateProgressBar() {
+            const completedStages = Object.values(clientData.stagesCompleted).filter(Boolean).length;
+            const progressPercentage = (completedStages / 4) * 100;
+            
+            const progressFill = document.querySelector('.progress-fill');
+            if (progressFill) {
+                progressFill.style.width = progressPercentage + '%';
+            }
+        }
+
+        function updateQuickActions() {
+            const quickActions = document.getElementById('quickActions');
+            const makePaymentBtn = document.getElementById('makePaymentBtn');
+            
+            if (clientData.isFunded && clientData.hasOutstandingLoan) {
+                if (quickActions) quickActions.style.display = 'block';
+                if (makePaymentBtn) makePaymentBtn.disabled = false;
+            } else {
+                if (quickActions) quickActions.style.display = 'none';
+                if (makePaymentBtn) makePaymentBtn.disabled = true;
+            }
+        }
+
+        function proceedToCurrentStage() {
+            switch(clientData.currentStage) {
+                case 1:
+                    showSection('documents');
+                    break;
+                case 2:
+                    showAgreementModal();
+                    break;
+                case 3:
+                    showBankingModal();
+                    break;
+                case 4:
+                    showPaymentModal();
+                    break;
+            }
+        }
+
+        function showAgreementModal() {
+            alert('Agreement signing functionality would be implemented here. This would open a modal with the loan agreement for digital signature.');
+        }
+
+        function showBankingModal() {
+            alert('Banking details form would be implemented here. This would open a secure form for bank account information.');
+        }
+
+        function showPaymentModal() {
+            alert('Payment processing would be implemented here. This would open a secure payment form for the processing fee.');
+        }
+
+        function checkLoanBalance() {
+            if (!clientData.isFunded || !clientData.hasOutstandingLoan) {
+                showAlert('You currently do not have an outstanding loan. This page will become active upon funding.', 'info');
+            } else {
+                alert('Loan balance functionality would be implemented here.');
+            }
+        }
+
+        function checkNextPayment() {
+            if (!clientData.isFunded || !clientData.hasOutstandingLoan) {
+                showAlert('You currently do not have an outstanding loan. This page will become active upon funding.', 'info');
+            } else {
+                alert('Next payment functionality would be implemented here.');
+            }
+        }
+
+        function makePayment() {
+            if (clientData.currentStage >= 4 || (clientData.isFunded && clientData.hasOutstandingLoan)) {
+                alert('Payment functionality would be implemented here.');
+            } else {
+                showAlert('Payment option will become available once you reach the payment stage.', 'warning');
+            }
+        }
+
+        function showAlert(message, type = 'info') {
+            const alertId = 'dynamicAlert_' + Date.now();
+            const iconMap = {
+                'info': 'info-circle',
+                'warning': 'exclamation-triangle',
+                'success': 'check-circle',
+                'error': 'times-circle'
+            };
+            
+            const alertHtml = `
+                <div id="${alertId}" class="alert-banner ${type}">
+                    <div class="alert-content">
+                        <i class="fas fa-${iconMap[type] || 'info-circle'}"></i>
+                        <span>${message}</span>
+                    </div>
+                    <button class="alert-close" onclick="dismissAlert('${alertId}')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            const dashboard = document.getElementById('dashboard');
+            dashboard.insertAdjacentHTML('afterbegin', alertHtml);
+            
+            // Auto-dismiss after 5 seconds
+            setTimeout(() => dismissAlert(alertId), 5000);
+        }
+
+        function setupEventListeners() {
+            // Add event listeners for dynamic functionality
+            const stageActionBtn = document.getElementById('stageActionBtn');
+            if (stageActionBtn) {
+                stageActionBtn.addEventListener('click', proceedToCurrentStage);
+            }
+        }
+
+        // Simulate stage completion (for testing)
+        function completeStage(stageNumber) {
+            const stageKeys = ['documents', 'agreement', 'banking', 'payment'];
+            const stageKey = stageKeys[stageNumber - 1];
+            
+            if (stageKey) {
+                clientData.stagesCompleted[stageKey] = true;
+                if (stageNumber < 4) {
+                    clientData.currentStage = stageNumber + 1;
+                } else {
+                    clientData.isFunded = true;
+                    clientData.hasOutstandingLoan = true;
+                }
+                updateStageDisplay();
+                
+                showAlert(`Stage ${stageNumber} completed successfully!`, 'success');
+            }
+        }
+
+        // Advanced AI Chat Functionality
+        let chatOpen = false;
+        let conversationHistory = [];
+        let isTyping = false;
+
+        function toggleChat() {
+            const chatBox = document.getElementById('aiChatBox');
+            const chatToggle = document.getElementById('chatToggle');
+            const notification = document.getElementById('chatNotification');
+            
+            if (chatOpen) {
+                closeChat();
+            } else {
+                openChat();
+            }
+        }
+
+        function openChat() {
+            const chatBox = document.getElementById('aiChatBox');
+            const chatToggle = document.getElementById('chatToggle');
+            const notification = document.getElementById('chatNotification');
+            
+            chatBox.style.display = 'flex';
+            chatToggle.style.display = 'none';
+            notification.style.display = 'none';
+            chatOpen = true;
+            
+            // Focus on input
+            setTimeout(() => {
+                document.getElementById('chatInput').focus();
+            }, 300);
+        }
+
+        function closeChat() {
+            const chatBox = document.getElementById('aiChatBox');
+            const chatToggle = document.getElementById('chatToggle');
+            
+            chatBox.style.display = 'none';
+            chatToggle.style.display = 'flex';
+            chatOpen = false;
+        }
+
+        function minimizeChat() {
+            closeChat();
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message && !isTyping) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                // Show typing indicator
+                showTypingIndicator();
+                
+                // Send to AI API
+                sendToAI(message);
+            }
+        }
+
+        function sendSuggestion(suggestion) {
+            const input = document.getElementById('chatInput');
+            input.value = suggestion;
+            sendMessage();
+        }
+
+        function addMessage(content, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="message-content">
+                        <p>${escapeHtml(content)}</p>
+                        <span class="message-time">${currentTime}</span>
+                    </div>
+                    <div class="message-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>${content}</p>
+                        <span class="message-time">${currentTime}</span>
+                    </div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Add to conversation history
+            conversationHistory.push({
+                role: sender === 'user' ? 'user' : 'assistant',
+                content: content
+            });
+        }
+
+        function showTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            typingIndicator.style.display = 'flex';
+            isTyping = true;
+            
+            const messagesContainer = document.getElementById('chatMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            typingIndicator.style.display = 'none';
+            isTyping = false;
+        }
+
+        async function sendToAI(message) {
+            try {
+                const response = await fetch('/api/chatbot.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        conversation_history: conversationHistory.slice(-10), // Last 10 messages for context
+                        client_area: true, // Flag for enhanced client area processing
+                        user_id: getCurrentUserId() // Get current user ID for personalized responses
+                    })
+                });
+                
+                const data = await response.json();
+                
+                hideTypingIndicator();
+                
+                if (data.success) {
+                    addMessage(data.response, 'bot');
+                } else {
+                    addMessage('I apologize, but I\'m having trouble processing your request right now. Please try again or contact our support team.', 'bot');
+                }
+                
+            } catch (error) {
+                console.error('Chat error:', error);
+                hideTypingIndicator();
+                addMessage('I\'m experiencing technical difficulties. Please try again later or contact support.', 'bot');
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Enter key to send message
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Auto-resize chat input
+        document.getElementById('chatInput').addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+        });
+
+        // Get current user ID for personalized responses
+        function getCurrentUserId() {
+            // Try to get user ID from session storage, local storage, or URL params
+            const userId = sessionStorage.getItem('user_id') || 
+                          localStorage.getItem('user_id') || 
+                          new URLSearchParams(window.location.search).get('user_id');
+            
+            // If no user ID found, try to extract from page context or make an API call
+            if (!userId) {
+                // Check if there's a user data element in the page
+                const userDataElement = document.querySelector('[data-user-id]');
+                if (userDataElement) {
+                    return userDataElement.getAttribute('data-user-id');
+                }
+                
+                // Return null if no user ID can be determined
+                return null;
+            }
+            
+            return userId;
+        }
+
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).style.display = 'block';
+
+            // Add active class to clicked nav link
+            if (event && event.target) {
+                event.target.closest('.nav-link').classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+/* React-specific overrides and adjustments */
+
+/* Ensure root element takes full height */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Remove default React/Vite styles */
+.logo {
+  display: none;
+}
+
+.card {
+  display: none;
+}
+
+.read-the-docs {
+  display: none;
+}
+
+/* Additional responsive improvements for React */
+.wrapper {
+  width: 100%;
+  /* overflow-x: hidden; */
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fix for form buttons in React */
+button.about-btn {
+  background-color: #1B424C;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-family: "DMSans-Medium";
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button.about-btn:hover {
+  background-color: #0f2e35;
+  transform: translateY(-2px);
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix potential z-index issues */
+.header {
+  z-index: 1000;
+}
+
+.footer-box p {
+  position: relative;
+  color: rgba(255, 255, 255, 1);
+  font-family: "DMSans-Bold";
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+.footer-ul-icon {
+  position: relative;
+  display: flex;
+  gap: 15px;
+}
+.footer-title {
+  position: relative;
+  color: #fff;
+  font-family: "DMSans-Bold";
+  font-size: 22px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+.divider-line {
+  position: relative;
+  width: 70px;
+  border: 1px solid #fff;
+}
+.footer-box li a {
+  position: relative;
+  font-family: "DMSans-Medium";
+  font-size: 18px;
+  line-height: normal;
+  letter-spacing: 1.15px;
+  color: #fff;
+  display: inline-block;
+  padding-top: 15px;
+}
+.footer-contact-icons {
+  position: relative;
+  background-color: #fff;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+  color: #000;
+  min-width: 36px;
+}
+.footer-ul-contact li a{
+  position: relative;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+ 
+.process-number {
+    position: absolute;
+    color: #d5d5d5;
+    font-size: 95px;
+    line-height: 56px;
+    font-family: "Raleway-Bold";
+    letter-spacing: 0.45px;
+    top: -20px;
+    left: -60px;
+}
+.pad-left{
+  position: relative;
+  padding-left: 50px;
+}
+.footer-box .workday-title {
+  position: relative;
+  color: #39C260;
+  font-family: "DMSans-Regular";
+  font-size: 22px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  margin-bottom: 0;
+  padding-top: 15px;
+}
+.inner-bg {
+  position: relative;
+  background-image: url(../images/footer-img.png);
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 50px 0px;
+}
+.inner-title {
+  position: relative;
+  color: #fff;
+  font-size: 40px;
+  line-height: normal;
+  font-family: "Raleway-Bold";
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+p {
+  position: relative;
+  font-family: "DMSans-Regular";
+  font-size: 18px;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  color: #424545;
+}
+.privacy-title {
+  position: relative;
+  color: #1B424C;
+  font-size: 22px;
+  line-height: normal;
+  font-family: "Raleway-Bold";
+  letter-spacing: 0.5px;
+  padding-bottom: 5px;
+}
+.privacy-ul li {
+  position: relative;
+  font-family: "DMSans-Regular";
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: #424545;
+  padding-bottom: 1rem;
+}
+.accordion-button:not(.collapsed) {
+  position: relative;
+  background-color: #1B424C;
+  color: #fff;
+  font-family: "DMSans-Regular";
+  font-size: 20px;
+}
+.accordion-button {
+  position: relative;
+  background-color: #fff;
+  color: #494E4F;
+  font-family: "DMSans-Regular";
+  font-size: 20px;
+}
+.accordion-button:focus {
+  position: relative;
+  box-shadow: none;
+}
+ 
+#aboutus,
+#service,
+#howwework,
+#faq {
+  scroll-margin-top: 140px;
+}

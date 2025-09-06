@@ -1,0 +1,2 @@
+# This file ensures the payment_confirmations directory is tracked by git
+# Payment confirmation files uploaded by users will be stored here

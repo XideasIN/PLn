@@ -1,0 +1,40 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "client_name": "Sarah Johnson",
+      "client_position": "Small Business Owner",
+      "content": "QuickFunds made my business expansion possible with their fast approval process and competitive rates. The entire experience was smooth and professional.",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "client_name": "Michael Chen",
+      "client_position": "Software Engineer",
+      "content": "I needed funds for home renovation and QuickFunds delivered exactly what they promised. Quick, transparent, and hassle-free process.",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "client_name": "Emily Rodriguez",
+      "client_position": "Marketing Manager",
+      "content": "Excellent customer service and very reasonable interest rates. The online application process was incredibly user-friendly.",
+      "rating": 4
+    },
+    {
+      "id": 4,
+      "client_name": "David Thompson",
+      "client_position": "Freelance Consultant",
+      "content": "As a freelancer, getting a loan was always challenging. QuickFunds understood my situation and provided flexible terms that worked for me.",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "client_name": "Lisa Wang",
+      "client_position": "Teacher",
+      "content": "Professional team, quick response, and transparent terms. I would definitely recommend QuickFunds to anyone looking for reliable financial solutions.",
+      "rating": 4
+    }
+  ]
+}

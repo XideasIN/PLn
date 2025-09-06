@@ -1,0 +1,280 @@
+# LoanFlow Security Protection Rules
+# Enhanced security and copy protection
+
+# Disable directory browsing
+Options -Indexes
+
+# Enable rewrite engine
+RewriteEngine On
+
+# 🚫 COMPLETE SOURCE CODE PROTECTION
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|bak|backup|env|config|conf|php~|php#|phps|phtml|inc|class|lib|tpl|txt|md|json|xml|yml|yaml)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# 🚫 BLOCK ACCESS TO SOURCE CODE FILES
+<FilesMatch "\.(php|inc|class|lib)$">
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        # Allow only specific entry points
+        RewriteCond %{REQUEST_FILENAME} !^.*(index|login|application-step1|application-step2|application-success|forgot-password|reset-password|privacy|terms|error|robots|sitemap|change-language)\.php$
+        RewriteCond %{REQUEST_URI} !^/(api|admin|client)/ 
+        RewriteRule ^.*$ - [F,L]
+    </IfModule>
+</FilesMatch>
+
+# 🚫 DATABASE CREDENTIALS PROTECTION
+<FilesMatch "(database|config|db|connection|credentials|settings)\.(php|inc|conf|ini|env|json|xml|yml|yaml)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# 🚫 API KEYS AND SECRETS PROTECTION
+<FilesMatch "(api|secret|key|token|auth|oauth|jwt|session)\.(php|inc|conf|ini|env|json|xml|yml|yaml|txt)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# 🚫 AUTOMATIC ATTACK BLOCKING - Enhanced Protection
+<IfModule mod_rewrite.c>
+    # Block malicious user agents, scrapers, and bots
+    RewriteCond %{HTTP_USER_AGENT} (wget|curl|HTTrack|WebCopier|WebZIP|WebReaper|Teleport|WebStripper|WebSucker|WebWhacker|Grabber|SiteSnagger|ProWebWalker|BackStreet|toCrawl|Offline|PageGrabber|SmartDownload|FlashGet|GetRight|libwww|lwp-trivial|msnbot|SiteBot|spider|harvest|extract|parser|scanner|nikto|sqlmap|nmap|masscan|zmap|nuclei|gobuster|dirb|dirbuster|wfuzz|ffuf|burpsuite|owasp|zap|acunetix|nessus|openvas|metasploit|sqlninja|havij|pangolin|bbqsql|jsql|blind|union|select|insert|update|delete|drop|create|alter|exec|execute|script|javascript|vbscript|onload|onerror|eval|expression|fromcharcode|alert|confirm|prompt|document\.cookie|document\.write) [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} ^$ 
+    RewriteRule .* - [F,L]
+    
+    # Block requests with suspicious referers
+    RewriteCond %{HTTP_REFERER} (semalt|kambasoft|savetubevideo|buttons-for-website|make-money-online|social-buttons|sitevalues|webmonetizer) [NC]
+    RewriteRule .* - [F,L]
+    
+    # Block malicious IP ranges (common attack sources)
+    RewriteCond %{REMOTE_ADDR} ^(185\.234\.|91\.200\.|5\.188\.|185\.220\.|194\.58\.|46\.161\.|95\.211\.) [OR]
+    RewriteCond %{REMOTE_ADDR} ^(103\.21\.|103\.22\.|103\.31\.|104\.16\.|108\.162\.|131\.0\.|141\.101\.|162\.158\.|172\.64\.|173\.245\.|188\.114\.|190\.93\.|197\.234\.|198\.41\.) [OR]
+    RewriteCond %{REMOTE_ADDR} ^(199\.27\.|203\.22\.|203\.28\.|203\.32\.|203\.34\.|203\.35\.) 
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# Prevent access to backup and temporary files
+<FilesMatch "\.(bak|backup|old|orig|original|tmp|temp|~|swp|swo|log|cache)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# 🚫 INTERNAL DOCUMENTATION PROTECTION
+<IfModule mod_rewrite.c>
+    # Block access to documentation directories
+    RewriteRule ^docs/ - [F,L]
+    RewriteRule ^documentation/ - [F,L]
+    RewriteRule ^readme\.(md|txt|html)$ - [F,L]
+    RewriteRule ^changelog\.(md|txt|html)$ - [F,L]
+    RewriteRule ^license\.(md|txt|html)$ - [F,L]
+    RewriteRule ^install\.(md|txt|html)$ - [F,L]
+    RewriteRule ^setup\.(md|txt|html)$ - [F,L]
+    RewriteRule ^guide\.(md|txt|html)$ - [F,L]
+    RewriteRule ^manual\.(md|txt|html|pdf)$ - [F,L]
+    RewriteRule ^help\.(md|txt|html)$ - [F,L]
+    RewriteRule ^api-docs/ - [F,L]
+    RewriteRule ^phpdoc/ - [F,L]
+    RewriteRule ^swagger/ - [F,L]
+</IfModule>
+
+# Block access to version control and development directories
+<IfModule mod_rewrite.c>
+    RewriteRule ^\.git - [F,L]
+    RewriteRule ^\.svn - [F,L]
+    RewriteRule ^\.hg - [F,L]
+    RewriteRule ^node_modules - [F,L]
+    RewriteRule ^vendor - [F,L]
+    RewriteRule ^composer\.(json|lock) - [F,L]
+    RewriteRule ^package\.(json|lock) - [F,L]
+    RewriteRule ^\.env - [F,L]
+    RewriteRule ^\.env\..* - [F,L]
+    RewriteRule ^\.gitignore - [F,L]
+    RewriteRule ^\.gitattributes - [F,L]
+    RewriteRule ^\.editorconfig - [F,L]
+    RewriteRule ^webpack\.(config|mix)\.js - [F,L]
+    RewriteRule ^gulpfile\.js - [F,L]
+    RewriteRule ^gruntfile\.js - [F,L]
+</IfModule>
+
+# Prevent hotlinking of images and documents
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?loanflow\.com [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?localhost [NC]
+    RewriteRule \.(jpg|jpeg|png|gif|svg|pdf|doc|docx|xls|xlsx)$ - [F,L]
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    # Prevent framing (clickjacking protection)
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # XSS Protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Content Type Options
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permissions Policy
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=()"
+    
+    # Content Security Policy
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.google.com https://js.hcaptcha.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'; frame-src 'self' https://www.google.com https://hcaptcha.com; object-src 'none'; base-uri 'self';"
+    
+    # Remove server information
+    Header always unset Server
+    Header always unset X-Powered-By
+    
+    # Cache control for sensitive pages
+    <FilesMatch "\.(php)$">
+        Header always set Cache-Control "no-cache, no-store, must-revalidate, private"
+        Header always set Pragma "no-cache"
+        Header always set Expires "0"
+    </FilesMatch>
+</IfModule>
+
+# Prevent SQL injection attempts
+<IfModule mod_rewrite.c>
+    RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} (\<|%3C).*iframe.*(\>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} union.*select.*\( [NC,OR]
+    RewriteCond %{QUERY_STRING} union.*all.*select.* [NC,OR]
+    RewriteCond %{QUERY_STRING} concat.*\( [NC,OR]
+    RewriteCond %{QUERY_STRING} (;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|or|script) [NC]
+    RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+# Block common attack patterns
+<IfModule mod_rewrite.c>
+    # Block directory traversal
+    RewriteCond %{THE_REQUEST} \s/+(.*?)/+[^\s]*\s [OR]
+    RewriteCond %{THE_REQUEST} \s(.*)\.\.(.*).*\s [OR]
+    RewriteCond %{THE_REQUEST} \s(.*)\.\.\\(.*).*\s [OR]
+    RewriteCond %{THE_REQUEST} \s(.*)%2e%2e(.*).*\s [OR]
+    RewriteCond %{THE_REQUEST} \s(.*)%252e%252e(.*).*\s
+    RewriteRule ^(.*)$ - [F,L]
+    
+    # Block file injection attempts
+    RewriteCond %{REQUEST_METHOD} GET [OR]
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
+    RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=https:// [OR]
+    RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+    RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC]
+    RewriteRule ^(.*)$ - [F,L]
+</IfModule>
+
+# Rate limiting (basic implementation)
+<IfModule mod_rewrite.c>
+    # This would be enhanced with mod_evasive or similar modules
+    # Basic protection against rapid requests
+</IfModule>
+
+# Compress files for better performance
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Set expire headers for static content
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+
+# Pretty URLs (if needed)
+<IfModule mod_rewrite.c>
+    # Remove .php extension from URLs
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^([^\.]+)$ $1.php [NC,L]
+    
+    # Redirect .php extension to clean URLs
+    RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
+    RewriteRule ^ /%1 [NC,L,R=301]
+</IfModule>
+
+# Custom error pages
+ErrorDocument 400 /error.php?code=400
+ErrorDocument 401 /error.php?code=401
+ErrorDocument 403 /error.php?code=403
+ErrorDocument 404 /error.php?code=404
+ErrorDocument 500 /error.php?code=500
+
+# Disable server signature
+ServerSignature Off
+
+# 🚫 ENHANCED SECURITY MEASURES
+<IfModule mod_rewrite.c>
+    # Block access to sensitive directories and files
+    RewriteRule ^(config|includes|languages|backups|uploads/.*\.php|logs|cache|tmp|temp|sessions)$ - [F,L]
+    RewriteRule ^(database|db|sql|backup|dump|export|import)\..*$ - [F,L]
+    RewriteRule ^.*\.(log|bak|backup|old|orig|tmp|temp|cache|session)$ - [F,L]
+    
+    # Block access to sensitive configuration files
+    RewriteRule ^.*\.(env|ini|conf|config|yaml|yml|json|xml)$ - [F,L]
+    
+    # Block direct access to PHP include files
+    RewriteRule ^includes/.*\.php$ - [F,L]
+    RewriteRule ^config/.*\.php$ - [F,L]
+    RewriteRule ^classes/.*\.php$ - [F,L]
+    RewriteRule ^lib/.*\.php$ - [F,L]
+    
+    # Force HTTPS (uncomment when SSL is configured)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Block requests with null bytes
+    RewriteCond %{QUERY_STRING} \x00 [OR]
+    RewriteCond %{REQUEST_URI} \x00
+    RewriteRule .* - [F,L]
+    
+    # Block requests with suspicious patterns
+    RewriteCond %{REQUEST_URI} (eval\(|base64_decode|gzinflate|str_rot13|preg_replace.*\be.*\b) [NC,OR]
+    RewriteCond %{REQUEST_URI} (\<|%3C).*(script|iframe|object|embed|applet).*(\>|%3E) [NC,OR]
+    RewriteCond %{REQUEST_URI} (union|select|insert|update|delete|drop|create|alter|exec|execute) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# 🚫 ADDITIONAL FILE PROTECTION
+<FilesMatch "\.(sql|log|bak|backup|old|orig|tmp|temp|cache|session|lock|pid|swp|swo|~|#)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# 🚫 PROTECT AGAINST INFORMATION DISCLOSURE
+<IfModule mod_headers.c>
+    # Hide PHP version and server info
+    Header always unset X-Powered-By
+    Header always unset Server
+    Header always set Server "WebServer"
+    
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Additional security headers for sensitive operations
+    <LocationMatch "\.(php|html|htm)$">
+        Header always set X-Frame-Options "DENY"
+        Header always set X-XSS-Protection "1; mode=block"
+        Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    </LocationMatch>
+</IfModule>

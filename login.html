@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>LoanFlow | Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="animation/aos.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/client-chat.css">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    
+    <style>
+        .login-container {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-header h2 {
+            color: #2c5aa0;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .login-header p {
+            color: #666;
+            margin-bottom: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .form-control {
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #2c5aa0;
+            box-shadow: 0 0 0 0.2rem rgba(44, 90, 160, 0.25);
+        }
+        .login-btn {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3d6f 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            padding: 12px 30px;
+            width: 100%;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 90, 160, 0.4);
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .forgot-password a {
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e1e5e9;
+        }
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            color: #666;
+            font-size: 14px;
+        }
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .signup-link a {
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-between" id="navbarText">
+            <ul class="navbar-nav w-100 justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <div class="dropdown">
+                  <a class="nav-link" href="index.html#service">Service</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#howwework">How We Work?</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html#aboutus">About Us</a>
+              </li>
+            </ul>
+            <a href="application-step1.php" class="headertop-btn me-2">APPLY</a>
+            <a href="login.html" class="headertop-btn-outline">LOGIN</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
+    <div class="main">
+      <div class="container">
+        <div class="login-container">
+          <div class="login-card" data-aos="fade-up">
+            <div class="login-header">
+              <h2>Welcome Back</h2>
+              <p>Sign in to access your LoanFlow account</p>
+            </div>
+            
+            <form id="loginForm" action="login.php" method="POST">
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email">
+              </div>
+              
+              <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required placeholder="Enter your password">
+              </div>
+              
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="remember" name="remember">
+                  <label class="form-check-label" for="remember">
+                    Remember me
+                  </label>
+                </div>
+              </div>
+              
+              <button type="submit" class="login-btn">Sign In</button>
+            </form>
+            
+            <div class="forgot-password">
+              <a href="forgot-password.html">Forgot your password?</a>
+            </div>
+            
+            <div class="divider">
+              <span>Don't have an account?</span>
+            </div>
+            
+            <div class="signup-link">
+              <p class="mb-0">New to LoanFlow? <a href="application-step1.php">Apply for a loan</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="footer-box" data-aos="fade-up" style="font-size: 8px !important;">
+      <div class="container">
+        <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    window.onscroll = function() {
+        var navbar = document.querySelector('.navbar');
+        
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    };
+  </script>
+  <script src="animation/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+    })
+  </script>
+  
+  <script>
+    // Load company settings from admin panel
+    async function loadCompanySettings() {
+      try {
+        const response = await fetch('api/get-company-settings.php');
+        const result = await response.json();
+        
+        if (result.success && result.data) {
+          // Update footer contact information
+          const addressElement = document.getElementById('company-address');
+          const phoneElement = document.getElementById('company-phone');
+          const emailElement = document.getElementById('company-email');
+          
+          if (addressElement) {
+            addressElement.innerHTML = result.data.company_address;
+          }
+          if (phoneElement) {
+            phoneElement.textContent = result.data.company_phone;
+          }
+          if (emailElement) {
+            emailElement.textContent = result.data.company_email;
+          }
+        }
+      } catch (error) {
+        console.log('Using default company settings:', error.message);
+        // Fallback to default values already in HTML
+      }
+    }
+    
+    // Load footer content dynamically
+    function loadFooter() {
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    }
+    
+    // Login form submission handler
+    document.addEventListener('DOMContentLoaded', function() {
+      loadCompanySettings();
+      loadFooter();
+      
+      const loginForm = document.getElementById('loginForm');
+      if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const formData = new FormData(this);
+          const submitBtn = this.querySelector('button[type="submit"]');
+          const originalText = submitBtn.textContent;
+          
+          // Show loading state
+          submitBtn.textContent = 'Signing In...';
+          submitBtn.disabled = true;
+          
+          fetch('login.php', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              // Redirect to client area or dashboard
+              window.location.href = data.redirect || 'client/dashboard.php';
+            } else {
+              // Show error message
+              alert('Error: ' + (data.message || 'Invalid email or password. Please try again.'));
+            }
+          })
+          .catch(error => {
+            console.error('Login error:', error);
+            alert('There was an error signing in. Please try again.');
+          })
+          .finally(() => {
+            // Restore button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          });
+        });
+      }
+    });
+  </script>
+  
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+  
+  <script>
+    // Load footer content dynamically
+    function loadFooter() {
+        let isFileProtocol = window.location.protocol === 'file:';
+        
+        if (isFileProtocol) {
+            // For file:// protocol, show a message about CORS limitations
+            document.getElementById('footer-placeholder').innerHTML = `
+                <div class="container text-center py-5">
+                    <div class="alert alert-warning">
+                        <h5>Footer Loading Limited</h5>
+                        <p>When accessing via file:// protocol, the footer cannot load due to browser security restrictions (CORS).</p>
+                        <p><strong>To see the complete website with footer:</strong></p>
+                        <p>Please use: <code>http://localhost:8000/login.html</code></p>
+                    </div>
+                </div>
+            `;
+            return;
+        }
+        
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    }
+    
+    // Load footer when DOM is ready
+    document.addEventListener('DOMContentLoaded', loadFooter);
+  </script>
+
+  <!-- Advanced AI Chat Box -->
+  <div id="aiChatBox" class="ai-chat-container">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="chat-title">
+          <h4>AI Assistant</h4>
+          <span class="chat-status" id="chatStatus">Online</span>
+        </div>
+      </div>
+      <div class="chat-controls">
+        <button class="chat-minimize" onclick="minimizeChat()">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button class="chat-close" onclick="closeChat()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot-message">
+        <div class="message-avatar">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="message-content">
+          <p>Hello! I'm here to help you with login issues, account recovery, or any questions about our services. How can I assist you?</p>
+          <span class="message-time">Just now</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="typing-indicator" id="typingIndicator" style="display: none;">
+      <div class="typing-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span>AI is typing...</span>
+    </div>
+    
+    <div class="chat-input-container">
+      <div class="chat-input-wrapper">
+        <input type="text" id="chatInput" placeholder="Type your message..." maxlength="500">
+        <button id="sendButton" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+      <div class="chat-suggestions">
+        <button class="suggestion-btn" onclick="sendSuggestion('I forgot my password')">Forgot Password</button>
+        <button class="suggestion-btn" onclick="sendSuggestion('How do I create an account?')">Create Account</button>
+        <button class="suggestion-btn" onclick="sendSuggestion('Login troubleshooting')">Login Help</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Toggle Button -->
+  <div id="chatToggle" class="chat-toggle" onclick="toggleChat()">
+    <i class="fas fa-comments"></i>
+    <span class="chat-notification" id="chatNotification" style="display: none;">1</span>
+  </div>
+
+  <script>
+    // Advanced AI Chat Functionality
+    let chatOpen = false;
+    let conversationHistory = [];
+    let isTyping = false;
+
+    function toggleChat() {
+      const chatBox = document.getElementById('aiChatBox');
+      const chatToggle = document.getElementById('chatToggle');
+      const notification = document.getElementById('chatNotification');
+      
+      if (chatOpen) {
+        closeChat();
+      } else {
+        openChat();
+      }
+    }
+
+    function openChat() {
+      const chatBox = document.getElementById('aiChatBox');
+      const chatToggle = document.getElementById('chatToggle');
+      const notification = document.getElementById('chatNotification');
+      
+      chatBox.style.display = 'flex';
+      chatToggle.style.display = 'none';
+      notification.style.display = 'none';
+      chatOpen = true;
+      
+      // Focus on input
+      setTimeout(() => {
+        document.getElementById('chatInput').focus();
+      }, 300);
+    }
+
+    function closeChat() {
+      const chatBox = document.getElementById('aiChatBox');
+      const chatToggle = document.getElementById('chatToggle');
+      
+      chatBox.style.display = 'none';
+      chatToggle.style.display = 'flex';
+      chatOpen = false;
+    }
+
+    function minimizeChat() {
+      closeChat();
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      
+      if (message && !isTyping) {
+        addMessage(message, 'user');
+        input.value = '';
+        
+        // Show typing indicator
+        showTypingIndicator();
+        
+        // Send to AI API
+        sendToAI(message);
+      }
+    }
+
+    function sendSuggestion(suggestion) {
+      const input = document.getElementById('chatInput');
+      input.value = suggestion;
+      sendMessage();
+    }
+
+    function addMessage(content, sender) {
+      const messagesContainer = document.getElementById('chatMessages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${sender}-message`;
+      
+      const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      
+      if (sender === 'user') {
+        messageDiv.innerHTML = `
+          <div class="message-content">
+            <p>${escapeHtml(content)}</p>
+            <span class="message-time">${currentTime}</span>
+          </div>
+          <div class="message-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+        `;
+      } else {
+        messageDiv.innerHTML = `
+          <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="message-content">
+            <p>${content}</p>
+            <span class="message-time">${currentTime}</span>
+          </div>
+        `;
+      }
+      
+      messagesContainer.appendChild(messageDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      
+      // Add to conversation history
+      conversationHistory.push({
+        role: sender === 'user' ? 'user' : 'assistant',
+        content: content
+      });
+    }
+
+    function showTypingIndicator() {
+      const typingIndicator = document.getElementById('typingIndicator');
+      typingIndicator.style.display = 'flex';
+      isTyping = true;
+      
+      const messagesContainer = document.getElementById('chatMessages');
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function hideTypingIndicator() {
+      const typingIndicator = document.getElementById('typingIndicator');
+      typingIndicator.style.display = 'none';
+      isTyping = false;
+    }
+
+    async function sendToAI(message) {
+      try {
+        const response = await fetch('/api/chatbot.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: message,
+            conversation_history: conversationHistory.slice(-10),
+            client_area: false
+          })
+        });
+        
+        const data = await response.json();
+        
+        hideTypingIndicator();
+        
+        if (data.success) {
+          addMessage(data.response, 'bot');
+        } else {
+          addMessage('I apologize, but I\'m having trouble processing your request right now. Please try again or contact our support team.', 'bot');
+        }
+        
+      } catch (error) {
+        console.error('Chat error:', error);
+        hideTypingIndicator();
+        addMessage('I\'m experiencing technical difficulties. Please try again later or contact support.', 'bot');
+      }
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Enter key to send message
+    document.getElementById('chatInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    // Auto-resize chat input
+    document.getElementById('chatInput').addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+    });
+  </script>
+</body>
+</html>
