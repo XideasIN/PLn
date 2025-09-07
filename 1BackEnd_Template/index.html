@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workspace Insights - Tability</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">🎯</div>
+                    <span>Tability</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-header">ADMINISTRATION</div>
+                    <a href="index.html" class="nav-item active">
+                        <i data-lucide="home" class="icon"></i>
+                        <span>HOME</span>
+                    </a>
+                    <a href="pages/loans.html" class="nav-item">
+                        <i data-lucide="file-text" class="icon"></i>
+                        <span>My loans</span>
+                    </a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-header">WORK</div>
+                    <a href="pages/plans.html" class="nav-item">
+                        <i data-lucide="target" class="icon"></i>
+                        <span>Plans</span>
+                    </a>
+                    <a href="pages/strategy.html" class="nav-item">
+                        <i data-lucide="map" class="icon"></i>
+                        <span>Strategy map</span>
+                    </a>
+                    <a href="pages/standup.html" class="nav-item">
+                        <i data-lucide="users" class="icon"></i>
+                        <span>Standup</span>
+                    </a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-header">REPORTS</div>
+                    <a href="pages/insights.html" class="nav-item">
+                        <i data-lucide="bar-chart-3" class="icon"></i>
+                        <span>Insights</span>
+                    </a>
+                    <a href="pages/dashboards.html" class="nav-item">
+                        <i data-lucide="layout-dashboard" class="icon"></i>
+                        <span>Dashboards</span>
+                    </a>
+                    <a href="pages/filters.html" class="nav-item">
+                        <i data-lucide="filter" class="icon"></i>
+                        <span>Filters</span>
+                    </a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-header">ORG</div>
+                    <a href="pages/people.html" class="nav-item">
+                        <i data-lucide="user" class="icon"></i>
+                        <span>People</span>
+                    </a>
+                    <a href="pages/teams.html" class="nav-item">
+                        <i data-lucide="users" class="icon"></i>
+                        <span>Teams</span>
+                    </a>
+                    <a href="pages/support.html" class="nav-item">
+                        <i data-lucide="help-circle" class="icon"></i>
+                        <span>Help and supports</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-title">
+                    <h1>Workspace Insights</h1>
+                    <span class="changes-badge">8 Changes</span>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="search-container">
+                        <i data-lucide="search" class="search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Search something...">
+                    </div>
+                    
+                    <div class="header-filters">
+                        <div class="filter-group">
+                            <span>Filter by:</span>
+                            <select class="filter-select" data-filter="plan">
+                                <option value="all">Plan</option>
+                                <option value="active">Active Plans</option>
+                                <option value="inactive">Inactive Plans</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <span>Filter by:</span>
+                            <select class="filter-select" data-filter="team">
+                                <option value="all">Team</option>
+                                <option value="development">Development</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="sales">Sales</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="user-menu">
+                        <div class="notification-icon">
+                            <i data-lucide="bell"></i>
+                            <span class="notification-badge"></span>
+                        </div>
+                        <div class="user-avatar">A</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                <!-- Workspace Audit Section -->
+                <div class="content-header">
+                    <h2 class="section-title">Workspace Audit</h2>
+                </div>
+                
+                <!-- Metrics Grid -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-category">USERS</div>
+                        </div>
+                        
+                        <div class="metric-value">
+                            <span class="metric-number">75</span>
+                            <span class="metric-unit">/100</span>
+                        </div>
+                        
+                        <div class="metric-warning">
+                            <i data-lucide="alert-triangle" class="warning-icon"></i>
+                            <div>
+                                <div style="font-weight: 600;">Warning</div>
+                                <div>Users with too many key results</div>
+                            </div>
+                            <span style="margin-left: auto; font-weight: 600;">1</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-category">PLANS</div>
+                        </div>
+                        
+                        <div class="metric-value">
+                            <span class="metric-number">75</span>
+                            <span class="metric-unit">/100</span>
+                        </div>
+                        
+                        <div class="metric-warning">
+                            <i data-lucide="alert-triangle" class="warning-icon"></i>
+                            <div>
+                                <div style="font-weight: 600;">Warning</div>
+                                <div>1 plan without recent check-ins</div>
+                            </div>
+                            <span style="margin-left: auto; font-weight: 600;">1</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-category">KEY RESULTS</div>
+                        </div>
+                        
+                        <div class="metric-value">
+                            <span class="metric-number">80</span>
+                            <span class="metric-unit">/100</span>
+                        </div>
+                        
+                        <div class="metric-warning">
+                            <i data-lucide="alert-triangle" class="warning-icon"></i>
+                            <div>
+                                <div style="font-weight: 600;">Warning</div>
+                                <div>2 key results without assigned owners</div>
+                            </div>
+                            <span style="margin-left: auto; font-weight: 600;">1</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-category">TASKS</div>
+                        </div>
+                        
+                        <div class="metric-value">
+                            <span class="metric-number">75</span>
+                            <span class="metric-unit">/100</span>
+                        </div>
+                        
+                        <div class="metric-warning">
+                            <i data-lucide="alert-triangle" class="warning-icon"></i>
+                            <div>
+                                <div style="font-weight: 600;">Warning</div>
+                                <div>9 tasks overdue</div>
+                            </div>
+                            <span style="margin-left: auto; font-weight: 600;">1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Audit Score Section -->
+                <div class="audit-section">
+                    <div class="audit-overview">
+                        <h3 class="section-title">OVERALL AUDIT SCORE</h3>
+                        
+                        <div class="audit-score-circle">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle cx="60" cy="60" r="52" class="circle-bg"></circle>
+                                <circle cx="60" cy="60" r="52" class="circle-progress" 
+                                        stroke-dasharray="326.7256637168141" 
+                                        stroke-dashoffset="81.68141592920353"></circle>
+                            </svg>
+                            <div class="score-text">75%</div>
+                        </div>
+                        
+                        <div class="audit-title">Overall Audit Score</div>
+                        <div class="audit-subtitle">Last updated 2 hours ago</div>
+                    </div>
+                    
+                    <div class="audit-details">
+                        <div class="audit-item">
+                            <div class="audit-item-title">User Audit</div>
+                            <div class="audit-progress">
+                                <span class="audit-score">75%</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-percentage="75" style="width: 0%;"></div>
+                                </div>
+                                <span class="audit-percentage">25%</span>
+                            </div>
+                        </div>
+
+                        <div class="audit-item">
+                            <div class="audit-item-title">Plan Audit</div>
+                            <div class="audit-progress">
+                                <span class="audit-score">75%</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-percentage="75" style="width: 0%;"></div>
+                                </div>
+                                <span class="audit-percentage">25%</span>
+                            </div>
+                        </div>
+
+                        <div class="audit-item">
+                            <div class="audit-item-title">Key Results Audit</div>
+                            <div class="audit-progress">
+                                <span class="audit-score">80%</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-percentage="80" style="width: 0%;"></div>
+                                </div>
+                                <span class="audit-percentage">20%</span>
+                            </div>
+                        </div>
+
+                        <div class="audit-item">
+                            <div class="audit-item-title">Tasks Audit</div>
+                            <div class="audit-progress">
+                                <span class="audit-score">75%</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-percentage="75" style="width: 0%;"></div>
+                                </div>
+                                <span class="audit-percentage">25%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activities -->
+                <div class="activities-section">
+                    <h3 class="section-title">Recent Activities</h3>
+                    
+                    <div class="activities-grid">
+                        <div class="activity-chart check-in-chart">
+                            <div class="chart-title">CHECK IN CREATED</div>
+                            <div class="chart-container"></div>
+                        </div>
+                        
+                        <div class="activity-chart key-results-chart">
+                            <div class="chart-title">KEY RESULTS VIEWED</div>
+                            <div class="chart-container"></div>
+                        </div>
+                        
+                        <div class="activity-chart tasks-chart">
+                            <div class="chart-title">TASKS UPDATED</div>
+                            <div class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
